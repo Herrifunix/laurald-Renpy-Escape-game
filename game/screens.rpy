@@ -1894,6 +1894,10 @@ screen inventory_screen():
             if selected_item:
                 text "[selected_item.name]" size 54 xalign 0.5 font "OldLondon.ttf"
                 text "[selected_item.description]\n" size 30 xalign 0.5 font "OldLondon.ttf"
+                
+                # Bouton de craft
+                textbutton "Combiner" action [SetVariable("crafting_selected_item", selected_item), Show("crafting_selection_screen")] xalign 0.5
+                
                 for action in selected_item.actions:
                     textbutton action["label"] action action["action"] xalign 0.5
             else:
