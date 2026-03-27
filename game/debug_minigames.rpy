@@ -8,6 +8,7 @@ default debug_minigame_registry = [
     ("Coffre (code 1225)", "debug_test_coffre"),
     ("Cryptex (mot BABYL)", "debug_test_cryptex"),
     ("Puzzle (pieces a remettre)", "puzzle"),
+    ("Puzzle 2 (Tour lanterne)", "debug_test_puzzle_2"),
     ("Trouver les objets", "debug_test_find_objects"),
 ]
 
@@ -146,4 +147,8 @@ label debug_test_find_objects:
     if _found_all_objects:
         $ renpy.notify("Mini-jeu Trouver les objets reussi")
 
+    return
+
+label debug_test_puzzle_2:
+    call puzzle_2
     return

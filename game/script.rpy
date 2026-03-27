@@ -106,6 +106,9 @@ default cryptex_taken = False  # Indicateur si le cryptex a été pris
 default plan_taken = False  # Indicateur si le plan a été pris
 default morceau_taken = False  # Indicateur si le morceau a été pris
 default morceaux_parchemin = 0 # Compteur pour la quantité de morceaux de parchemin
+default puzzle2_time_limit = 300
+default puzzle2_deadline = 0.0
+default puzzle2_time_left = 0
 
 # Action personnalisée pour permuter la valeur de clef_horloge
 init python:
@@ -568,3 +571,75 @@ label win:
 
 # Fin de la scène
     return
+
+
+label puzzle_2:
+    scene bg bureau
+    hide screen toggle_button
+    hide screen grille_horloge
+    $ puzzle2_time_left = puzzle2_time_limit
+    show screen puzzle2_timer
+
+    python:
+        k2 = Puzzle2()
+        k2.set_sensitive(False)
+        k2.show()
+
+
+label quick_continue_2:
+
+    while True:
+
+        python:
+
+            ui.textbutton("abandonner", ui.jumps("giveup_2"), xalign=.02, yalign=.98)
+            k2.set_sensitive(True)
+            event2 = k2.interact()
+
+            if event2:
+                renpy.checkpoint()
+
+            k2.set_sensitive(False)
+
+        if event2 == "win":
+            jump win_2
+
+
+label giveup_2:
+
+    $ k2.set_sensitive(False)
+    hide screen puzzle2_timer
+
+    show dim
+    with dissolve
+
+    menu:
+        e "Etes-vous sûr d'arrêter ?"
+
+        "Yes":
+            e "Très bien, on retentera plus tard."
+            jump lose_2
+
+        "No":
+            jump quick_continue_2
+
+
+label win_2:
+    hide screen puzzle2_timer
+    scene horloge_astro_ouvert
+    show Alexandre at right
+    alex "Bravo ! Vous avez résolu le puzzle de la tour lanterne avec brio !"
+    alex "Pour vous remercier, voici une petite présentation de l'association de la cathédrale de Beauvais."
+    
+    # Lancement de la vidéo de l'association. 
+    $ renpy.movie_cutscene("video/Découvrez-l’horloge-astronomique-de-Beauvas_1.webm")
+    scene horloge_astro
+    show Alexandre at right
+    alex "Le temps est écoulé pour ce puzzle de la tour lanterne."
+    menu:
+        alex "Voulez-vous réessayer de reconstituer le puzzle ?"
+        "Oui, je veux retenter ma chance.":
+            jump puzzle_2
+        "Non, j'abandonne pour le moment.":
+            alex "Très bien, vous pourrez réessayer plus tard."
+            return

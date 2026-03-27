@@ -2222,6 +2222,25 @@ screen rotating_image():
     # Bouton pour faire pivoter l'image dans le sens antihoraire
     textbutton "↺" action Function(rotate_counterclockwise) xpos 0.2 ypos 0.5 anchor (0.5, 0.5)
 
+
+screen puzzle2_timer():
+    zorder 200
+
+    frame:
+        xalign 0.97
+        yalign 0.03
+        xpadding 14
+        ypadding 8
+        background "#0009"
+        $ min_left = puzzle2_time_left // 60
+        $ sec_left = puzzle2_time_left % 60
+        text ("Temps restant : %02d:%02d" % (min_left, sec_left)) size 28
+
+    timer 1.0 repeat True action [
+        SetVariable("puzzle2_time_left", max(0, puzzle2_time_left - 1)),
+        If(puzzle2_time_left <= 1, [Hide("puzzle2_timer"), Jump("lose_2")], NullAction()),
+    ]
+
 ################################# PUZZLE (ne fonctionne pas)
 screen puzzle():
     modal True

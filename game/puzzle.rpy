@@ -26,14 +26,18 @@ init python:
 
     class Puzzle(object):
         
-        def __init__(self):
+        def __init__(self, image_pattern="card/room-%d-%d.jpg", fallback_pattern="card/room-%d-%d.jpg", card_zoom=1.0, left=256, top=256, col_spacing=256, row_spacing=256):
+
+            self.image_pattern = image_pattern
+            self.fallback_pattern = fallback_pattern
+            self.card_zoom = card_zoom
 
             # Constants that let us easily change where the game is
             # located.
-            LEFT=256
-            TOP=256
-            COL_SPACING = 256
-            ROW_SPACING = 256
+            LEFT = left
+            TOP = top
+            COL_SPACING = col_spacing
+            ROW_SPACING = row_spacing
             self.COL_NUM = 4
             self.ROW_NUM = 3
             
@@ -46,7 +50,7 @@ init python:
             for i in range(0, self.COL_NUM):
                 for j in range(0, self.ROW_NUM):
                     value = (i, j)
-                    t.card(value, "card/room-%d-%d.jpg" % (i,j))
+                    t.card(value, self._make_card_displayable(i, j))
                     t.set_faceup(value, True)
                     t.set_rotate(value, renpy.random.choice(rotate_random))
                     deck.append(value)
@@ -133,3 +137,57 @@ init python:
         # Sets things as sensitive (or not).
         def set_sensitive(self, value):
             self.table.set_sensitive(value)
+
+        def _resolve_card_path(self, i, j):
+            image_path = self.image_pattern % (i, j)
+
+            candidates = [image_path]
+
+            # Compat: certains exports ont un tiret final avant l'extension.
+            if image_path.endswith(".png"):
+                candidates.append(image_path[:-4] + "-.png")
+
+            for candidate in candidates:
+                if renpy.loadable(candidate):
+                    return candidate
+
+            fallback_path = self.fallback_pattern % (i, j)
+            return fallback_path
+
+        def _make_card_displayable(self, i, j):
+            image_path = self._resolve_card_path(i, j)
+            if self.card_zoom != 1.0:
+                return Transform(image_path, zoom=self.card_zoom)
+            return image_path
+
+
+    class Puzzle2(Puzzle):
+        """Copie du puzzle Horloge/Tour Lanterne pour un second mode de test."""
+        def __init__(self):
+            super(Puzzle2, self).__init__(
+                # Les fichiers horloge sont nommés en format ligne-colonne.
+                image_pattern="images/horloge/piece-%d-%d.png",
+                fallback_pattern="card/room-%d-%d.jpg",
+                card_zoom=0.40,  # Réduit à 0.40 pour bien empêcher le chevauchement
+                left=380,
+                top=250,
+                col_spacing=205, # Espacement légèrement réduit pour resserrer les pièces
+                row_spacing=205,
+            )
+
+        def _resolve_card_path(self, i, j):
+            # i = colonne (0..3), j = ligne (0..2)
+            # Les assets sont en piece-ligne-colonne.
+            image_path = "images/horloge/piece-%d-%d.png" % (j, i)
+
+            candidates = [image_path]
+
+            # Compat: certains fichiers incluent un tiret final avant l'extension.
+            if image_path.endswith(".png"):
+                candidates.append(image_path[:-4] + "-.png")
+
+            for candidate in candidates:
+                if renpy.loadable(candidate):
+                    return candidate
+
+            return self.fallback_pattern % (i, j)
