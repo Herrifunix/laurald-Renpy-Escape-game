@@ -1993,7 +1993,7 @@ screen plan_screen():
 
     # Bouton Mini-Jeux (visible seulement en mode dev)
     if config.developer:
-        textbutton "Debug Jeux" action Show("debug_minigames"):
+        textbutton "Debug Jeux" action ShowMenu("debug_minigames"):
             xalign 0.95
             yalign 0.1
             text_color "#00ff00"

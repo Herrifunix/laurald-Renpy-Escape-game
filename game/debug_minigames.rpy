@@ -1,4 +1,4 @@
-# debug_minigames.rpy
+﻿# debug_minigames.rpy
 
 # Active a la demande pour tester les mini-jeux sans avancer l'histoire.
 default debug_minigame_mode = False
@@ -157,15 +157,43 @@ label debug_test_puzzle_2:
 label debug_give_craft_items:
     python:
         # Objets pour tester l'artisanat
-        o_morceau_carte_1 = Item("Morceau de carte 1", "Une moiti� de carte.", "morceau_1.png")
-        o_morceau_carte_2 = Item("Morceau de carte 2", "L'autre moiti� de carte.", "morceau_1.png")
-        o_manche = Item("Manche en bois", "Un simple bout de bois.", "parchemin.png")
-        o_tete = Item("T�te de marteau", "Une lourde masse en fer.", "parchemin.png")
+        o_morceau_carte_1 = Item("Morceau de carte 1", "Une moitié de carte.", "morceau_1.png", item_id="morceau_carte_1")
+        o_morceau_carte_2 = Item("Morceau de carte 2", "L'autre moitié de carte.", "morceau_1.png", item_id="morceau_carte_2")
+        o_manche = Item("Manche en bois", "Un simple bout de bois.", "parchemin.png", item_id="manche_bois")
+        o_tete = Item("Tête de marteau", "Une lourde masse en fer.", "parchemin.png", item_id="tete_marteau")
 
         player_inventory.add_item(o_morceau_carte_1)
         player_inventory.add_item(o_morceau_carte_2)
         player_inventory.add_item(o_manche)
         player_inventory.add_item(o_tete)
 
-    $ renpy.notify("Objets de craft ajout�s � votre inventaire !")
+    $ renpy.notify("Objets de craft ajoutés à votre inventaire !")
+    return
+    python:
+        # Objets pour tester l'artisanat
+        o_morceau_carte_1 = Item("Morceau de carte 1", "Une moitié de carte.", "morceau_1.png", item_id="morceau_carte_1")
+        o_morceau_carte_2 = Item("Morceau de carte 2", "L'autre moitié de carte.", "morceau_1.png", item_id="morceau_carte_2")
+        o_manche = Item("Manche en bois", "Un simple bout de bois.", "parchemin.png", item_id="manche_bois")
+        o_tete = Item("Tête de marteau", "Une lourde masse en fer.", "parchemin.png", item_id="tete_marteau")
+
+        player_inventory.add_item(o_morceau_carte_1)
+        player_inventory.add_item(o_morceau_carte_2)
+        player_inventory.add_item(o_manche)
+        player_inventory.add_item(o_tete)
+
+    $ renpy.notify("Objets de craft ajoutés à votre inventaire !")
+    return
+    python:
+        # Objets pour tester l'artisanat
+        o_morceau_carte_1 = Item("Morceau de carte 1", "Une moitiï¿½ de carte.", "morceau_1.png")
+        o_morceau_carte_2 = Item("Morceau de carte 2", "L'autre moitiï¿½ de carte.", "morceau_1.png")
+        o_manche = Item("Manche en bois", "Un simple bout de bois.", "parchemin.png")
+        o_tete = Item("Tï¿½te de marteau", "Une lourde masse en fer.", "parchemin.png")
+
+        player_inventory.add_item(o_morceau_carte_1)
+        player_inventory.add_item(o_morceau_carte_2)
+        player_inventory.add_item(o_manche)
+        player_inventory.add_item(o_tete)
+
+    $ renpy.notify("Objets de craft ajoutï¿½s ï¿½ votre inventaire !")
     return

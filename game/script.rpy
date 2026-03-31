@@ -9,11 +9,17 @@ define config.version = "1.0"
 # Déclaration de la classe pour les objets de l'inventaire
 init python:
     class Item:
-        def __init__(self, name, description, image, actions=[]):
+        def __init__(self, name, description, image, item_id=None, actions=None):
             self.name = name
             self.description = description
             self.image = image
-            self.actions = actions
+            self.actions = actions if actions is not None else []
+            self.item_id = item_id if item_id else name
+
+        def __eq__(self, other):
+            if isinstance(other, Item):
+                return self.item_id == other.item_id
+            return False
 
 # Classe pour gérer l'inventaire du joueur
 init python:
@@ -290,6 +296,7 @@ label eveque_cloitre:
     call screen eveque_button #affiche un bouton sur l'éveque pour permettre de cliquer dessus pour amorcer le dialogue
 
 label dial_eveque:
+    hide screen eveque_button
     scene bg cloitre
     show EVEQUE at left
     menu:
@@ -414,6 +421,7 @@ label coffre_ouvert:
     label coffre_ouvert_et_vide:
     call screen eveque_button2
     label dial_eveque2:
+    hide screen eveque_button2
     menu:
         "Que dois-je faire maintenant ?" :
             jump quefaireensuite
@@ -509,9 +517,7 @@ label Horloge:
     show screen grille_horloge
     alex "Bonjour [nom_du_perso]"
     # Attendre une interaction du joueur
-    $ _game_menu_screen = None  # Empêche l'affichage du menu du jeu
-    window hide
-    $ ui.interact()
+    pause
 
 label grille_horloge_ouvert:
 
