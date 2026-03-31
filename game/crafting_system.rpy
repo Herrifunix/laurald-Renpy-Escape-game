@@ -5,7 +5,9 @@
 # Les noms doivent correspondre exactement à l'attribut .name des objets Item
 define craft_recipes = {
     ("Morceau de plan 1", "Morceau de plan 2"): "Plan complet",
-    # Ajoutez d'autres recettes ici
+    ("Manche en bois", "Tête de marteau"): "Marteau",
+    ("Morceau de clé 1", "Morceau de clé 2"): "Clé rouillée",
+    ("Lentille en verre", "Tube en laiton"): "Longue-vue",
 }
 
 # Fonction pour tenter de combiner deux objets
@@ -47,8 +49,13 @@ init python:
     # Fonction auxiliaire pour créer l'objet résultat (Exemple à personnaliser)
     def create_item_by_name(name):
         if name == "Plan complet":
-            return Item("Plan complet", "Un plan reconstitué.", "images/plan_cathedrale_grand.png")
-        # Ajoutez d'autres cas ici
+            return Item("Plan complet", "Un plan reconstituÃ©.", "plan-parchemin.png", actions=[{"label": "Voir", "action": [Hide(),Jump("plan_cathedrale")]}])
+        elif name == "Marteau":
+            return Item("Marteau", "Un marteau solide. Utile pour briser quelque chose.", "coffre-mini.png")
+        elif name == "Clé rouillée":
+            return Item("Clé rouillée", "Une clé ancienne reconstituée à partir de deux bouts.", "cryptex-mini.png")
+        elif name == "Longue-vue":
+            return Item("Longue-vue", "Une longue-vue en laiton. Permet de voir au loin.", "morceau_1.png")
         return None
 
 # Variable pour stocker le premier objet sélectionné pour le craft
