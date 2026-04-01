@@ -466,21 +466,31 @@ label plan_cathedrale:
     # Attendre une interaction du joueur
     $ _game_menu_screen = None  # Empêche l'affichage du menu du jeu
     window hide
-    $ ui.interact()
+label boucle_plan:
+    pause
+    jump boucle_plan
 
 label orgues:
     scene orgues
-    # Attendre une interaction du joueur
-    $ _game_menu_screen = None  # Empêche l'affichage du menu du jeu
-    window hide
-    $ ui.interact()
+    $ _game_menu_screen = None  # Empêche l'affichage du menu du jeu (si souhaité)
+    call screen salle_orgue
+label boucle_orgues:
+    # On n'arrivera ici qu'après un Return() depuis l'écran
+    pause
+    jump boucle_orgues
+
+label jouer_orgue:
+    call screen orgue_jouable
+    jump boucle_orgues
 
 label choeur:
     scene choeur
     # Attendre une interaction du joueur
     $ _game_menu_screen = None  # Empêche l'affichage du menu du jeu
     window hide
-    $ ui.interact()
+label boucle_choeur:
+    pause
+    jump boucle_choeur
 
 label Accueil:
     #Montrer le guichet d'accueil
@@ -497,17 +507,23 @@ label Accueil:
     alex "L'horloge astronomique ne fonctionne plus,"
     alex "l'orgue est complètement bloqué,"
     alex "et impossible d'entrer dans la sacristie !"
+label alex_menu:
     menu:
         "Que se passe-t-il avec l'horloge ?" :
-            jump Horloge
-        "L'orgue est bloqué ?" : 
-            jump coffre_ouvert_et_vide
+            alex "Il faut trouver un moyen de la réparer."
+            jump alex_menu
+        "L'orgue est bloqué ?" :
+            alex "Seule une mélodie précise permet d'activer ses rouages."
+            jump alex_menu
         "Pourquoi est-il impossible d'entrer dans la sacristie ?" :
-            jump Horloge
-    # Attendre une interaction du joueur
-    $ _game_menu_screen = None  # Empêche l'affichage du menu du jeu
-    window hide
-    $ ui.interact()
+            alex "La serrure est ancienne, la clé a dû être perdue dans le temps."
+            jump alex_menu
+        "Je vais jeter un oeil.":
+            alex "À très vite, utilisez votre carte graphique."
+            
+label boucle_accueil:
+    pause
+    jump boucle_accueil
 
 label Horloge:
     # Montrer la scène horloge_astro
@@ -516,8 +532,11 @@ label Horloge:
     show screen toggle_button
     show screen grille_horloge
     alex "Bonjour [nom_du_perso]"
+
+label boucle_horloge:
     # Attendre une interaction du joueur
     pause
+    jump boucle_horloge
 
 label grille_horloge_ouvert:
 

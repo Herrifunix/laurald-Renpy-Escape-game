@@ -1907,8 +1907,7 @@ screen inventory_screen():
     #textbutton "Fermer" action Hide("inventory_screen"):
     textbutton "Fermer" action [
         SetVariable("selected_item", None),  # Réinitialiser la sélection
-        Hide("inventory_screen"),
-        Return()
+        Hide("inventory_screen")
     ]:
         xalign 0.5
         yalign 0.1
@@ -1975,7 +1974,20 @@ screen plan_screen():
             
             if location_choeur_active:
                 hotspot (786, 442, 75, 146) action [Hide ("plan_screen"), Jump("choeur")] #choeur
+
+        # Ajout de boutons visuels cliquables par-dessus le fond
+        if location_orgue_active:
+            textbutton "Orgue" action [Hide ("plan_screen"), Jump("orgues")] xpos 522 ypos 439 text_size 30 text_color "#FFF" background "#aa690841"
             
+        if location_horloge_active:
+            textbutton "Horloge" action [Hide ("plan_screen"), Jump("Horloge")] xpos 776 ypos 246 text_size 30 text_color "#FFF" background "#aa690841"
+            
+        if location_cloitre_active:
+            textbutton "Cloître" action [Hide ("plan_screen"), Jump("dial_eveque2")] xpos 279 ypos 90 text_size 30 text_color "#FFF" background "#aa690841"
+            
+        if location_accueil_active:
+            textbutton "Accueil" action [Hide ("plan_screen"), Jump("Accueil")] xpos 645 ypos 315 text_size 30 text_color "#FFF" background "#aa690841"
+
     # Bouton pour fermer la carte
     textbutton "Fermer" action [
         Hide("plan_screen"),
