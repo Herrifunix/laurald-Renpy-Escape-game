@@ -1,0 +1,6 @@
+# Ren'Py save files and directories
+saves/
+*.save
+*.save.bak
+navigation.json
+persistent
