@@ -1903,6 +1903,20 @@ screen inventory_screen():
             else:
                 text "Sélectionnez un objet pour voir les détails." size 50 xalign 0.5 font "OldLondon.ttf"
 
+    # Bouton Debug (visible seulement en mode dev)
+    if config.developer:
+        textbutton "Debug Carte" action [SetVariable("selected_item", None), Hide("inventory_screen"), Show("debug_map_locations")]:
+            xalign 0.95
+            yalign 0.05
+            text_color "#ff0000"
+
+    # Bouton Mini-Jeux (visible seulement en mode dev)
+    if config.developer:
+        textbutton "Debug Jeux" action [SetVariable("selected_item", None), Hide("inventory_screen"), ShowMenu("debug_minigames")]:
+            xalign 0.95
+            yalign 0.1
+            text_color "#00ff00"
+
     # Bouton pour fermer l'inventaire
     #textbutton "Fermer" action Hide("inventory_screen"):
     textbutton "Fermer" action [
@@ -1990,25 +2004,10 @@ screen plan_screen():
 
     # Bouton pour fermer la carte
     textbutton "Fermer" action [
-        Hide("plan_screen"),
-        Return()
+        Hide("plan_screen")
     ]:
         xalign 0.5
         yalign 0.1
-
-    # Bouton Debug (visible seulement en mode dev)
-    if config.developer:
-        textbutton "Debug Carte" action Show("debug_map_locations"):
-            xalign 0.95
-            yalign 0.05
-            text_color "#ff0000"
-
-    # Bouton Mini-Jeux (visible seulement en mode dev)
-    if config.developer:
-        textbutton "Debug Jeux" action ShowMenu("debug_minigames"):
-            xalign 0.95
-            yalign 0.1
-            text_color "#00ff00"
 
 
 ##############################################################################################

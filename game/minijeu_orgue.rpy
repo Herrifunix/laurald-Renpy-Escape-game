@@ -2,6 +2,7 @@ init python:
     # Variables globales pour le mini-jeu de l'orgue
     orgue_sequence = []
     orgue_melodies = {
+        "partition_1": ["Sol", "Mi", "Re"],
         "melodie_secrete": ["Do", "Re", "Mi", "Do"],
         "melodie_magique": ["Mi", "Fa", "Sol", "Do", "Re"]
     }
@@ -62,6 +63,12 @@ screen orgue_jouable():
         textbutton "Si" action [SetScreenVariable("active_note", "Si"), Function(jouer_note, "Si")] text_size 30 text_color "#FFF" background (Solid("#aa0") if active_note == "Si" else Solid("#333")) hover_background (Solid("#aa0") if active_note == "Si" else Solid("#555")) padding (20, 40)
         
     textbutton "Quitter le clavier" action Jump("orgues") xalign 0.5 yalign 0.95
+
+label orgue_partition_1:
+    "Bravo ! La première partition (Sol - Mi - Ré) résonne parfaitement."
+    "Un mécanisme invisible s'est débloqué."
+    # Vous pourrez ajouter d'autres actions ici
+    jump jouer_orgue
 
 label orgue_melodie_secrete:
     "Vous avez joué la mélodie secrète !"
