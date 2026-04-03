@@ -1975,8 +1975,8 @@ screen plan_screen():
                 hotspot (645, 315, 137, 62) action [Hide ("plan_screen"), Jump("Accueil")] #Accueil
             
             if location_basse_oeuvre_active:
-                hotspot (277, 354, 131, 185) action [Hide ("plan_screen"), Jump("map_classe")] #basse oeuvre
-            
+                hotspot (277, 354, 131, 185) action [Hide ("plan_screen"), Jump("basse_oeuvre")] #basse oeuvre
+
             if location_orgue_active:
                 hotspot (522, 439, 84, 153) action [Hide ("plan_screen"), Jump("orgues")] #orgue
             
@@ -2001,6 +2001,12 @@ screen plan_screen():
             
         if location_accueil_active:
             textbutton "Accueil" action [Hide ("plan_screen"), Jump("Accueil")] xpos 645 ypos 315 text_size 30 text_color "#FFF" background "#aa690841"
+
+        if location_basse_oeuvre_active:
+            textbutton "Basse Oeuvre" action [Hide ("plan_screen"), Jump("basse_oeuvre")] xpos 277 ypos 354 text_size 30 text_color "#FFF" background "#aa690841"
+
+        if location_choeur_active:
+            textbutton "Chœur" action [Hide ("plan_screen"), Jump("choeur")] xpos 786 ypos 442 text_size 30 text_color "#FFF" background "#aa690841"
 
     # Bouton pour fermer la carte
     textbutton "Fermer" action [

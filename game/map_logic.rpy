@@ -2,7 +2,7 @@
 # Variables pour activer/désactiver les lieux sur la carte
 default location_cloitre_active = True
 default location_accueil_active = True
-default location_basse_oeuvre_active = False # Était commenté
+default location_basse_oeuvre_active = True
 default location_orgue_active = True
 default location_croisee_active = False # Était commenté
 default location_horloge_active = True

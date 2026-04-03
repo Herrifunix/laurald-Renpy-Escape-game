@@ -485,9 +485,12 @@ label jouer_orgue:
 
 label choeur:
     scene choeur
-    # Attendre une interaction du joueur
     $ _game_menu_screen = None  # Empêche l'affichage du menu du jeu
-    window hide
+    
+    # Appel de l'écran local du choeur pour interagir avec le décor
+    call screen salle_choeur
+    # Si le joueur récupère un objet (lunettes), la boucle se poursuit
+    
 label boucle_choeur:
     pause
     jump boucle_choeur
