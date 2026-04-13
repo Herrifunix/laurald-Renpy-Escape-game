@@ -19,7 +19,7 @@ init python:
             orgue_sequence.pop(0)
             
         # Jouer un son ici (si des sons de notes sont disponibles)
-        # renpy.play("audio/notes/" + note + ".ogg")
+        renpy.play("audio/organ/" + note.lower() + ".wav")
         
         # Vérifie si une mélodie correspond à la fin de la séquence actuelle
         for nom_melodie, melodie_secrete in orgue_melodies.items():

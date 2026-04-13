@@ -159,13 +159,16 @@ label debug_give_craft_items:
         # Objets pour tester l'artisanat
         o_morceau_carte_1 = Item("Morceau de carte 1", "Une moitié de carte.", "morceau_1.png", item_id="morceau_carte_1")
         o_morceau_carte_2 = Item("Morceau de carte 2", "L'autre moitié de carte.", "morceau_1.png", item_id="morceau_carte_2")
-        o_manche = Item("Manche en bois", "Un simple bout de bois.", "parchemin.png", item_id="manche_bois")
-        o_tete = Item("Tête de marteau", "Une lourde masse en fer.", "parchemin.png", item_id="tete_marteau")
+        o_manche = Item("Manche en bois", "Un simple bout de bois.", Transform("manche.png", zoom=0.5), item_id="manche_bois")
+        o_tete = Item("Tête de marteau", "Une lourde masse en fer.", Transform("tete.png", zoom=0.5), item_id="tete_marteau")
+        o_frag_myst = create_item_by_id("fragments_mystere")
 
         player_inventory.add_item(o_morceau_carte_1)
         player_inventory.add_item(o_morceau_carte_2)
         player_inventory.add_item(o_manche)
         player_inventory.add_item(o_tete)
+        if o_frag_myst:
+            player_inventory.add_item(o_frag_myst)
 
     $ renpy.notify("Objets de craft ajoutés à votre inventaire !")
     return

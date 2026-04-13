@@ -67,15 +67,20 @@ screen salle_choeur():
             has_lunettes = any(item.item_id == "lunettes_agnes" for item in player_inventory.get_items())
 
         if not has_lunettes:
-            # Un bouton presque caché (style hidden object ou texte simple pour l'exemple)
-            textbutton "Ramasser de fines lunettes" action Jump("trouver_lunettes") xpos 0.6 ypos 0.8 text_size 20 text_color "#FFF" background "#aa6908"
+            # Les lunettes affichées directement comme objet cliquable
+            imagebutton:
+                idle Transform("images/lunettes.png", zoom=0.33)
+                hover Transform("images/lunettes.png", zoom=0.36)
+                action Jump("trouver_lunettes")
+                xpos 0.6
+                ypos 0.8
 
     # Bouton vers d'autres salles ou ouverture directe de map si on veut
 
 label trouver_lunettes:
     "Vous trouvez une paire de fines lunettes de lecture sous un banc de prière du chœur."
     python:
-        lunettes_agnes = Item("Lunettes", "Des lunettes de lecture anciennes.", "morceau_1.png", item_id="lunettes_agnes")
+        lunettes_agnes = Item("Lunettes", "Des lunettes de lecture anciennes.", Transform("lunettes.png", zoom=0.33), item_id="lunettes_agnes")
         player_inventory.add_item(lunettes_agnes)
     $ renpy.notify("Objet ajouté : Lunettes")
     # On renvoie le joueur à la vue normale

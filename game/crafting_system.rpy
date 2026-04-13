@@ -45,11 +45,15 @@ init python:
         if item_id == "carte_complete":
             return Item("Carte complète", "Une carte reconstituée à partir de deux morceaux.", "plan-parchemin.png", item_id="carte_complete", actions=[{"label": "Voir", "action": [Hide(),Jump("plan_cathedrale")]}])
         elif item_id == "marteau":
-            return Item("Marteau", "Un marteau solide. Utile pour briser quelque chose.", "coffre-mini.png", item_id="marteau")
+            return Item("Marteau", "Un marteau solide. Utile pour briser quelque chose.", Transform("marteau.png", zoom=0.5), item_id="marteau")
         elif item_id == "cle_rouillee":
             return Item("Clé rouillée", "Une clé ancienne reconstituée à partir de deux bouts.", "cryptex-mini.png", item_id="cle_rouillee")
         elif item_id == "longue_vue":
-            return Item("Longue-vue", "Une longue-vue en laiton. Permet de voir au loin.", "morceau_1.png", item_id="longue_vue")
+            return Item("Longue-vue", "Une longue-vue en laiton. Permet de voir au loin.", Transform("lunettes.png", zoom=0.33), item_id="longue_vue")
+        elif item_id == "fragments_mystere":
+            return Item("Fragments mystères", "Des morceaux d'un objet ancien. Il semble possible de les assembler.", "morceau_1.png", item_id="fragments_mystere", actions=[{"label": "Assembler", "action": [Hide("inventory_screen"), Call("start_assemblage", item_to_repair_id="fragments_mystere", repaired_item_id="artefact_repare")]}])
+        elif item_id == "artefact_repare":
+            return Item("Artefact réparé", "Un artefact ancien reconstitué avec succès à l'aide des fragments.", "coffre-mini.png", item_id="artefact_repare")
         return None
 
 default crafting_selected_item = None
