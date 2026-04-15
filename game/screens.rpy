@@ -1879,10 +1879,26 @@ screen inventory_screen():
     # Fond semi-transparent pour l'inventaire
     add "images/inventory_bg.png"
     
-    # Grid pour afficher les objets.
-    grid 4 3 spacing 10 xalign 0.5 yalign 0.5:
-        for item in player_inventory.get_items():
-            imagebutton idle item.image action SetVariable("selected_item", item)
+    # Grid pour afficher les objets (4 col, 3 lignes).
+    $ inventaire_items = player_inventory.get_items()
+    grid 4 3 spacing 25 xalign 0.5 yalign 0.35:
+        for i in range(12):
+            if i < len(inventaire_items):
+                $ item = inventaire_items[i]
+                # Le conteneur de chaque objet
+                button:
+                    action SetVariable("selected_item", item)
+                    xysize (180, 180)
+                    background None # Fond transparent
+                    hover_background Solid("#ffffff22") # Léger survol
+                    
+                    # Image contenue et redimensionnée sans déformer pour ne pas déborder
+                    add Transform(item.image, fit="contain", xysize=(160, 160), align=(0.5, 0.5))
+            else:
+                # Cellule vide
+                frame:
+                    xysize (180, 180)
+                    background None
     
     # Zone d'information sur l'objet sélectionné.
     frame:

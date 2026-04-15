@@ -87,20 +87,27 @@ screen crafting_selection_screen():
             spacing 20
             label "Sélectionnez un deuxième objet à combiner avec [crafting_selected_item.name]" xalign 0.5
 
-            grid 4 3:
-                spacing 10
-                for item in player_inventory.get_items():
-                    if item != crafting_selected_item:
-                        imagebutton:
-                            idle item.image
+            grid 4 3 spacing 25:
+                $ items_affichables = [it for it in player_inventory.get_items() if it != crafting_selected_item]
+                
+                for i in range(12):
+                    if i < len(items_affichables):
+                        $ item = items_affichables[i]
+                        button:
                             action [
                                 Function(try_combine_items, crafting_selected_item, item),
                                 SetVariable("crafting_selected_item", None),
                                 Hide("crafting_selection_screen")
                             ]
-                # Fill empty grid cells securely if length is < 12 based on RenPy requirement
-                for i in range(12 - len([it for it in player_inventory.get_items() if it != crafting_selected_item])):
-                    null
+                            xysize (150, 150)
+                            background None
+                            hover_background Solid("#ffffff22")
+                            
+                            add Transform(item.image, fit="contain", xysize=(130, 130), align=(0.5, 0.5))
+                    else:
+                        frame:
+                            xysize (150, 150)
+                            background None
 
             textbutton "Annuler" action [SetVariable("crafting_selected_item", None), Hide("crafting_selection_screen")] xalign 0.5
 
