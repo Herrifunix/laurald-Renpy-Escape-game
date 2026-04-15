@@ -10,6 +10,7 @@ default debug_minigame_registry = [
     ("Puzzle (pieces a remettre)", "puzzle"),
     ("Puzzle 2 (Tour lanterne)", "debug_test_puzzle_2"),
     ("Trouver les objets", "debug_test_find_objects"),
+    ("Révélation à la bougie", "start_message_cache"),
     ("++ Donner objets de Craft", "debug_give_craft_items"),
 ]
 
@@ -162,6 +163,8 @@ label debug_give_craft_items:
         o_manche = Item("Manche en bois", "Un simple bout de bois.", Transform("manche.png", zoom=0.5), item_id="manche_bois")
         o_tete = Item("Tête de marteau", "Une lourde masse en fer.", Transform("tete.png", zoom=0.5), item_id="tete_marteau")
         o_frag_myst = create_item_by_id("fragments_mystere")
+        o_bougie = create_item_by_id("bougie")
+        o_parchemin = create_item_by_id("parchemin_mystere")
 
         player_inventory.add_item(o_morceau_carte_1)
         player_inventory.add_item(o_morceau_carte_2)
@@ -169,6 +172,8 @@ label debug_give_craft_items:
         player_inventory.add_item(o_tete)
         if o_frag_myst:
             player_inventory.add_item(o_frag_myst)
+        player_inventory.add_item(o_bougie)
+        player_inventory.add_item(o_parchemin)
 
     $ renpy.notify("Objets de craft ajoutés à votre inventaire !")
     return

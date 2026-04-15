@@ -64,6 +64,7 @@ init:
 image bg bureau = "images/bureau.png"
 image dim = "#0008"
 image bg accueil = "images/portail-nord.png"
+image bg portail_sud = "images/portail-sud.png"
 image bg perso = "images/perso.png"
 image bg kiosque = "images/kiosque.png"
 image MOINE = "images/Le_moine.webp"
@@ -191,8 +192,15 @@ label start:
     pause
     stop movie
 
+    # Démarrage sur la carte extérieure (au lieu de la discussion directe avec le moine)
+    jump exterieur_parvis
+
+label rencontre_moine:
+    # On cache l'interface extérieure
+    hide screen exterieur_parvis_screen
+    
     # Afficher l'arrière-plan et le personnage
-    scene bg accueil
+    scene bg cloitre
     show MOINE at right
     # Jouer la musique de fond
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0

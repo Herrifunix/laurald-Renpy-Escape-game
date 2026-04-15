@@ -6,6 +6,7 @@ define craft_recipes = {
     ("manche_bois", "tete_marteau"): "marteau",
     ("morceau_cle_1", "morceau_cle_2"): "cle_rouillee",
     ("lentille", "tube_laiton"): "longue_vue",
+    ("bougie", "parchemin_mystere"): "parchemin_revele"
 }
 
 init python:
@@ -33,8 +34,12 @@ init python:
             new_item = create_item_by_id(result_id)
 
             if new_item:
-                player_inventory.add_item(new_item)
-                renpy.notify("Objets combinés avec succès : %s créé !" % new_item.name)
+                if result_id == "parchemin_revele":
+                    # Lance le mini-jeu pour ce craft spécifique avant d'ajouter l'objet
+                    renpy.call("start_message_cache", item_a.item_id, item_b.item_id, result_id)
+                else:
+                    player_inventory.add_item(new_item)
+                    renpy.notify("Objets combinés avec succès : %s créé !" % new_item.name)
                 return True
         else:
             renpy.notify("Ces deux objets ne semblent pas aller ensemble.")
@@ -54,6 +59,12 @@ init python:
             return Item("Fragments mystères", "Des morceaux d'un objet ancien. Il semble possible de les assembler.", "morceau_1.png", item_id="fragments_mystere", actions=[{"label": "Assembler", "action": [Hide("inventory_screen"), Call("start_assemblage", item_to_repair_id="fragments_mystere", repaired_item_id="artefact_repare")]}])
         elif item_id == "artefact_repare":
             return Item("Artefact réparé", "Un artefact ancien reconstitué avec succès à l'aide des fragments.", "coffre-mini.png", item_id="artefact_repare")
+        elif item_id == "bougie":
+            return Item("Bougie", "Une petite bougie allumée dégageant une douce chaleur.", "morceau_1.png", item_id="bougie")
+        elif item_id == "parchemin_mystere":
+            return Item("Parchemin vide", "Un vieux parchemin sans aucune écriture visible... à moins que ?", "images/message_cache/parchemin vide.png", item_id="parchemin_mystere")
+        elif item_id == "parchemin_revele":
+            return Item("Parchemin révélé", "Le message secret est désormais visible !", "images/message_cache/parchemin avec le message.png", item_id="parchemin_revele", actions=[{"label": "Lire", "action": [Hide("inventory_screen"), Show("image_viewer_screen", img="images/message_cache/parchemin avec le message.png")]}])
         return None
 
 default crafting_selected_item = None
