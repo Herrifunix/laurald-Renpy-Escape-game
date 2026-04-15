@@ -100,14 +100,14 @@ label start_message_cache(item_a_id=None, item_b_id=None, result_id=None):
     call screen minijeu_message_cache
     
     if _return == True:
-        renpy.notify("Le message complet est apparu !")
+        $ renpy.notify("Le message complet est apparu !")
         if result_id:
             # On donne le parchemin finalement révélé
             python:
                 new_item = create_item_by_id(result_id)
                 player_inventory.add_item(new_item)
     else:
-        renpy.notify("Vous avez arrêté de chauffer le parchemin.")
+        $ renpy.notify("Vous avez arrêté de chauffer le parchemin.")
         if item_a_id and item_b_id:
             # Le joueur a annulé le craft, on remet les objets dans l'inventaire
             python:

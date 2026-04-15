@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/minijeu_assemblage.rpy", line 128: expected statement.
-    renpy.notify("Assemblage annulé.")
-                                     ^
+File "game/minijeu_message_cache.rpy", line 103: expected statement.
+    renpy.notify("Le message complet est apparu !")
+                                                   ^
+
+File "game/minijeu_message_cache.rpy", line 110: expected statement.
+    renpy.notify("Vous avez arrêté de chauffer le parchemin.")
+                                                            ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Apr 13 17:08:49 2026
+Wed Apr 15 16:51:54 2026
