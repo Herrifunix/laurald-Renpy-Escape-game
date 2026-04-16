@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/minijeu_message_cache.rpy", line 103: expected statement.
-    renpy.notify("Le message complet est apparu !")
-                                                   ^
-
-File "game/minijeu_message_cache.rpy", line 110: expected statement.
-    renpy.notify("Vous avez arrêté de chauffer le parchemin.")
-                                                            ^
+File "game/tl/None/common.rpym", line 1: translate strings statement expects a non-empty block.
+    translate None strings:
+                                 ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Wed Apr 15 16:51:54 2026
+Thu Apr 16 16:38:35 2026

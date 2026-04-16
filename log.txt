@@ -1,220 +1,34 @@
-2026-04-15 14:51:53 UTC
+2026-04-16 14:42:54 UTC
 Windows-11-10.0.26100-SP0
 Ren'Py 8.5.2.26010301
 
-Early init took 28 ms
-Loading error handling took 24 ms
-Loading script took 806 ms
-Loading save slot metadata took 29 ms
+Early init took 29 ms
+Loading error handling took 22 ms
+Loading script took 741 ms
+Loading save slot metadata took 24 ms
 Loading persistent took 0 ms
-
-File "game/minijeu_message_cache.rpy", line 103: expected statement.
-    renpy.notify("Le message complet est apparu !")
-                                                   ^
-
-File "game/minijeu_message_cache.rpy", line 110: expected statement.
-    renpy.notify("Vous avez arrêté de chauffer le parchemin.")
-                                                            ^
-DPI scale factor: 1.500000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 597 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 9070 XT'
-Version: '4.6.0 Compatibility Profile Context 26.3.1.260309'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 240, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 5 ms
-Loading error handling took 6 ms
-Loading script took 152 ms
-Loading save slot metadata took 11 ms
-Loading persistent took 0 ms
-Running init code took 43 ms
-Loading analysis data took 10 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 19 ms
-Backing up script files to 'C:\\Users\\Pierre\\AppData\\Roaming/RenPy/backups\\laurald-Renpy-Escape-game':
-Dump and make backups took 55 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 23 ms
-DPI scale factor: 1.500000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 1 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 2 ms
-Analyze screens took 12 ms
-Save screen analysis took 13 ms
-Save pyanalysis took 8 ms
-Save bytecode took 3 ms
-Running _start took 1 ms
-Interface start took 177 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 9070 XT'
-Version: '4.6.0 Compatibility Profile Context 26.3.1.260309'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 240, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 6 ms
-Loading error handling took 8 ms
-Loading script took 265 ms
-Loading save slot metadata took 12 ms
-Loading persistent took 0 ms
-Running init code took 22 ms
-Loading analysis data took 7 ms
-Analyze and compile ATL took 0 ms
-Reloading save slot metadata took 9 ms
-Backing up script files to 'C:\\Users\\Pierre\\AppData\\Roaming/RenPy/backups\\laurald-Renpy-Escape-game':
-Dump and make backups took 44 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 35 ms
-DPI scale factor: 1.500000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 1 ms
-Analyze screens took 13 ms
-Save screen analysis took 14 ms
-Save pyanalysis took 9 ms
-Save bytecode took 2 ms
-Running _start took 1 ms
-Interface start took 188 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 9070 XT'
-Version: '4.6.0 Compatibility Profile Context 26.3.1.260309'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 240, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 5 ms
-Loading error handling took 8 ms
-Loading script took 263 ms
-Loading save slot metadata took 13 ms
-Loading persistent took 0 ms
-Running init code took 24 ms
-Loading analysis data took 5 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 10 ms
-Backing up script files to 'C:\\Users\\Pierre\\AppData\\Roaming/RenPy/backups\\laurald-Renpy-Escape-game':
-Dump and make backups took 60 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 33 ms
-DPI scale factor: 1.500000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 1 ms
-Analyze screens took 12 ms
-Save screen analysis took 14 ms
-Save pyanalysis took 0 ms
-Save bytecode took 1 ms
-Running _start took 0 ms
-Interface start took 187 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 9070 XT'
-Version: '4.6.0 Compatibility Profile Context 26.3.1.260309'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 240, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 6 ms
-Loading error handling took 7 ms
-Loading script took 105 ms
-Loading save slot metadata took 17 ms
-Loading persistent took 0 ms
-Running init code took 30 ms
+Running init code took 48 ms
 Loading analysis data took 6 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 9 ms
+Reloading save slot metadata took 15 ms
 Backing up script files to 'C:\\Users\\Pierre\\AppData\\Roaming/RenPy/backups\\laurald-Renpy-Escape-game':
-Dump and make backups took 42 ms
+Dump and make backups took 45 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 38 ms
+Initial gc took 22 ms
 DPI scale factor: 1.500000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 1 ms
-Load screen analysis took 0 ms
-Analyze screens took 13 ms
-Save screen analysis took 15 ms
-Save pyanalysis took 0 ms
-Save bytecode took 2 ms
-Running _start took 0 ms
-Interface start took 191 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 9070 XT'
-Version: '4.6.0 Compatibility Profile Context 26.3.1.260309'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 240, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 5 ms
-Loading error handling took 7 ms
-Loading script took 91 ms
-Loading save slot metadata took 11 ms
-Loading persistent took 0 ms
-Running init code took 26 ms
-Loading analysis data took 5 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 8 ms
-Dump and make backups took 35 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 31 ms
-DPI scale factor: 1.500000
-Creating interface object took 0 ms
-Init translation took 0 ms
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 2 ms
+Init translation took 1 ms
 Cleaning stores took 0 ms
-Load screen analysis took 26 ms
-Analyze screens took 1 ms
-Save screen analysis took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 12 ms
+Save screen analysis took 17 ms
 Save pyanalysis took 0 ms
-Save bytecode took 0 ms
+Save bytecode took 29 ms
 Running _start took 0 ms
-Interface start took 180 ms
+Interface start took 694 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 2560, 1440)
@@ -223,7 +37,7 @@ Windowed mode.
 Vendor: 'ATI Technologies Inc.'
 Renderer: 'AMD Radeon RX 9070 XT'
 Version: '4.6.0 Compatibility Profile Context 26.3.1.260309'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 240, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 280, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
 Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
 Maximum texture size: 4096x4096
 Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
