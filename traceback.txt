@@ -1,39 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While parsing C:\Users\Pierre\Downloads\Nouveau dossier (3)\renpy-8.5.2-sdk\laurald-Renpy-Escape-game\game/tl/None/common.rpym.
-UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 131: invalid continuation byte
+While running game code:
+  File "game/screens.rpy", line 267, in execute_default
+    default quick_menu = False
+Exception: store.quick_menu is being given a default a second time.
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "renpy/bootstrap.py", line 401, in bootstrap
-    renpy.main.main()
-    ~~~~~~~~~~~~~~~^^
-  File "renpy/main.py", line 403, in main
-    renpy.exports.load_module("tl/None/common")
-    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "renpy/exports/scriptexports.py", line 98, in load_module
-    initcode = renpy.game.script.load_module(name)
-               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "renpy/script.py", line 483, in load_module
-    self.load_appropriate_file(".rpymc", [".rpym"], dir, fn, initcode)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/script.py", line 1051, in load_appropriate_file
-    data, stmts = self.load_file(dir, fn + source)
-                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "renpy/script.py", line 840, in load_file
-    stmts = renpy.parser.parse(fullfn)
-            ~~~~~~~~~~~~~~~~~~^^^^^^^^
-  File "renpy/parser.py", line 1680, in parse
-    lines = list_logical_lines(fn, filedata, linenumber)
-            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/lexer.py", line 349, in list_logical_lines
-    data = data_io.read()
-           ~~~~~~~~~~~~^^
-  File "<frozen codecs>", line 322, in decode
-UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 131: invalid continuation byte
+  File "renpy/common/00start.rpy", line 210, in script
+    python:
+  File "renpy/ast.py", line 1187, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1273, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/common/00start.rpy", line 211, in <module>
+    renpy.execute_default_statement(True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "renpy/exports/statementexports.py", line 375, in execute_default_statement
+    i.execute_default(start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^
+  File "game/screens.rpy", line 267, in execute_default
+    default quick_menu = False
+Exception: store.quick_menu is being given a default a second time.
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.5.2.26010301
- 
-Thu Apr 16 16:34:57 2026
+Les Secrets de la Cathédrale de Beauvais 1.0
+Fri Apr 17 15:59:33 2026

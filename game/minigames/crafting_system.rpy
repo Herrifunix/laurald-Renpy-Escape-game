@@ -35,8 +35,8 @@ init python:
 
             if new_item:
                 if result_id == "parchemin_revele":
-                    # Lance le mini-jeu pour ce craft spécifique avant d'ajouter l'objet
-                    renpy.call("start_message_cache", item_a.item_id, item_b.item_id, result_id)
+                    # Lance le mini-jeu en nouveau contexte pour ne pas interrompre les dialogues
+                    renpy.call_in_new_context("start_message_cache", item_a.item_id, item_b.item_id, result_id)
                 else:
                     player_inventory.add_item(new_item)
                     renpy.notify("Objets combinés avec succès : %s créé !" % new_item.name)
@@ -56,7 +56,8 @@ init python:
         elif item_id == "longue_vue":
             return Item("Longue-vue", "Une longue-vue en laiton. Permet de voir au loin.", Transform("lunettes.png", zoom=0.33), item_id="longue_vue")
         elif item_id == "fragments_mystere":
-            return Item("Fragments mystères", "Des morceaux d'un objet ancien. Il semble possible de les assembler.", "morceau_1.png", item_id="fragments_mystere", actions=[{"label": "Assembler", "action": [Hide("inventory_screen"), Call("start_assemblage", item_to_repair_id="fragments_mystere", repaired_item_id="artefact_repare")]}])
+            # On lance start_assemblage dans un nouveau contexte pour ne pas interrompre les événements de l'histoire en cours
+            return Item("Fragments mystères", "Des morceaux d'un objet ancien. Il semble possible de les assembler.", "morceau_1.png", item_id="fragments_mystere", actions=[{"label": "Assembler", "action": [Hide("inventory_screen"), Function(renpy.call_in_new_context, "start_assemblage", item_to_repair_id="fragments_mystere", repaired_item_id="artefact_repare")]}])
         elif item_id == "artefact_repare":
             return Item("Artefact réparé", "Un artefact ancien reconstitué avec succès à l'aide des fragments.", "coffre-mini.png", item_id="artefact_repare")
         elif item_id == "bougie":

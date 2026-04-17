@@ -1,44 +1,114 @@
-2026-04-16 14:42:54 UTC
+2026-04-17 14:00:06 UTC
 Windows-11-10.0.26100-SP0
 Ren'Py 8.5.2.26010301
 
-Early init took 29 ms
-Loading error handling took 22 ms
-Loading script took 741 ms
-Loading save slot metadata took 24 ms
+Early init took 34 ms
+Loading error handling took 19 ms
+Loading script took 104 ms
+Loading save slot metadata took 18 ms
 Loading persistent took 0 ms
-Running init code took 48 ms
-Loading analysis data took 6 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 15 ms
-Backing up script files to 'C:\\Users\\Pierre\\AppData\\Roaming/RenPy/backups\\laurald-Renpy-Escape-game':
-Dump and make backups took 45 ms
+Running init code took 34 ms
+Loading analysis data took 7 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 9 ms
+Dump and make backups took 0 ms
 Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 22 ms
+Making clean stores took 1 ms
+Initial gc took 23 ms
 DPI scale factor: 1.500000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 2 ms
-Init translation took 1 ms
+Creating interface object took 1 ms
+Init translation took 0 ms
 Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 12 ms
-Save screen analysis took 17 ms
+Load screen analysis took 27 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
 Save pyanalysis took 0 ms
-Save bytecode took 29 ms
-Running _start took 0 ms
-Interface start took 694 ms
+Save bytecode took 32 ms
+﻿Ren'Py 8.5.2.26010301 lint report, generated at: Fri Apr 17 16:00:07 2026
 
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 9070 XT'
-Version: '4.6.0 Compatibility Profile Context 26.3.1.260309'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1440, 'refresh_rate': 280, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(2560, 1406) drawable=(2560, 1406)
-Maximum texture size: 4096x4096
+game/core/keymap.rpy:1 The init priority (1100) is not in the -999 to 999 range.
+
+game/core/options.rpy:170 define config.developer already defined at game/core/options.rpy:42
+
+game/core/script.rpy:4 define config.name already defined at game/core/options.rpy:18
+
+game/core/script.rpy:5 define config.version already defined at game/core/options.rpy:29
+
+game/core/script.rpy:657 The jump is to nonexistent label 'lose_2'.
+
+game/plugins/action_editor/ActionEditor.rpy:18 The init priority (-1098) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor.rpy:27 The init priority (-1600) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor.rpy:133 The init priority (-1598) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor_config.rpy:1 The init priority (1600) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor_config.rpy:5 The init priority (-1600) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor_config.rpy:204 The init priority (1600) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor_screens.rpy:562 The init priority (-1599) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor_screens.rpy:596 The init priority (-1597) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor_screens.rpy:989 The init priority (-1598) is not in the -999 to 999 range.
+
+game/plugins/action_editor/ActionEditor_screens.rpy:1311 The init priority (-1598) is not in the -999 to 999 range.
+
+game/screens.rpy:1808 The screen coffre has not been given a parameter list.
+This can be fixed by writing 'screen coffre():' instead.
+
+game/screens.rpy:1817 The screen parchemin has not been given a parameter list.
+
+game/screens.rpy:1826 The screen parchemin has not been given a parameter list.
+
+game/screens.rpy:1836 The screen parchemin_recupere has not been given a parameter list.
+
+game/screens.rpy:1844 The screen grille_horloge has not been given a parameter list.
+
+game/screens.rpy:2184 The screen coffre_ouvert has not been given a parameter list.
+
+game/screens.rpy:2231 The screen message_screen has not been given a parameter list.
+
+game/ui/image_viewer.rpy:54 The init priority (-2000) is not in the -999 to 999 range.
+
+game/ui/menu_screen.rpy:43 The init priority (-1500) is not in the -999 to 999 range.
+
+game/ui/sound_viewer.rpy:49 The init priority (-2000) is not in the -999 to 999 range.
+
+images/Image collée (2).png contains non-ASCII characters in its filename.
+(ZIP file distributions can only reliably include ASCII filenames.)
+
+images/Image collée.png contains non-ASCII characters in its filename.
+
+video/Découvrez-l’horloge-astronomique-de-Beauvas_1.webm contains non-ASCII characters in its filename.
+
+
+Unreachable Statements:
+
+game/core/functions.rpy:
+    * line     4 
+
+game/core/script.rpy:
+    * line   443 
+
+game/minigames/debug_minigames.rpy:
+    * line   180 
+    * line   192 
+    * line   194 
+    * line   206 
+
+
+Statistics:
+
+The game contains 94 dialogue blocks, containing 1,331 words and 9,035
+characters, for an average of 14.2 words and 96 characters per block.
+
+The game contains 7 menus, 30 images, and 82 screens.
+
+
+Lint is not a substitute for thorough testing. Remember to update Ren'Py
+before releasing. New releases fix bugs and improve compatibility.

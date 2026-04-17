@@ -1,4 +1,4 @@
-# game/minijeu_message_cache.rpy
+﻿# game/minijeu_message_cache.rpy
 
 init python:
     import pygame
@@ -10,25 +10,44 @@ init python:
             self.revealed_img = renpy.displayable(revealed_img)
             self.grid_size = grid_size
             self.brush_size = brush_size
-            self.revealed_cells = set()
+            self.revealed_cells = {}
             self.is_completed = False
             self.total_cells_approx = 0
 
+            # Pre-create standard alpha transforms
+            self.alpha_imgs = {
+                0.2: Transform(self.revealed_img, alpha=0.2),
+                0.4: Transform(self.revealed_img, alpha=0.4),
+                0.6: Transform(self.revealed_img, alpha=0.6),
+                0.8: Transform(self.revealed_img, alpha=0.8),
+                1.0: Transform(self.revealed_img, alpha=1.0)
+            }
+
         def render(self, width, height, st, at):
             empty_r = renpy.render(self.empty_img, width, height, st, at)
-            revealed_r = renpy.render(self.revealed_img, width, height, st, at)
+            
+            # Fetch valid renders for this frame
+            a_renders = {}
+            for lvl, disp in self.alpha_imgs.items():
+                a_renders[lvl] = renpy.render(disp, width, height, st, at)
             
             rv = renpy.Render(empty_r.width, empty_r.height)
             rv.blit(empty_r, (0, 0))
             
-            # Draw revealed chunks
             grid = self.grid_size
             
-            # Calculer le nombre total de cellules (approx) une seule fois
             if self.total_cells_approx == 0:
                 self.total_cells_approx = (empty_r.width // grid) * (empty_r.height // grid)
                 
-            for (cx, cy) in self.revealed_cells:
+            for (cx, cy), alpha_val in self.revealed_cells.items():
+                a = 0.2
+                if alpha_val >= 1.0: a = 1.0
+                elif alpha_val >= 0.8: a = 0.8
+                elif alpha_val >= 0.6: a = 0.6
+                elif alpha_val >= 0.4: a = 0.4
+                    
+                revealed_r = a_renders[a]
+                
                 x = cx * grid
                 y = cy * grid
                 w = min(grid, revealed_r.width - x)
@@ -58,8 +77,9 @@ init python:
                         cell = (cx + dx, cy + dy)
                         # Pour éviter de stocker des cellules hors limites (moins de ressources)
                         if cell[0] >= 0 and cell[1] >= 0:
-                            if cell not in self.revealed_cells:
-                                self.revealed_cells.add(cell)
+                            current_alpha = self.revealed_cells.get(cell, 0.0)
+                            if current_alpha < 1.0:
+                                self.revealed_cells[cell] = min(1.0, current_alpha + 0.015)
                                 added = True
                         
             if added:
@@ -67,7 +87,8 @@ init python:
                 
                 # Victoire si 60% de la zone est révélée
                 if self.total_cells_approx > 0:
-                    if len(self.revealed_cells) > (self.total_cells_approx * 0.6) and not self.is_completed:
+                    fully_revealed = sum(1 for v in self.revealed_cells.values() if v >= 0.8)
+                    if fully_revealed > (self.total_cells_approx * 0.6) and not self.is_completed:
                         self.is_completed = True
                         return True # Renvoie True à l'_return de l'écran
 
@@ -117,3 +138,4 @@ label start_message_cache(item_a_id=None, item_b_id=None, result_id=None):
                 player_inventory.add_item(item_2)
         
     return
+

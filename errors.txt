@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/tl/None/common.rpym", line 1: translate strings statement expects a non-empty block.
-    translate None strings:
-                                 ^
+File "game/core/screens.rpy", line 2157: '[' was never closed
+    action [f(lettre1 == 2 and lettre2 == 1 and lettre3 == 2 and lettre4 == 5 and lettre5 == 12,
+           ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Thu Apr 16 16:38:35 2026
+Fri Apr 17 15:48:06 2026

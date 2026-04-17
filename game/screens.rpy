@@ -1,4 +1,4 @@
-################################################################################
+﻿################################################################################
 ## Initialisation
 ################################################################################
 
@@ -2309,3 +2309,12 @@ screen inventory_morceau_1():
     textbutton "Fermer" action Hide("inventory_morceau_1"):
         xalign 0.5
         yalign 0.1
+screen image_viewer_screen(img):
+    modal True
+    zorder 100
+    
+    add "#000000cc"
+    
+    add img xalign 0.5 yalign 0.5
+    
+    textbutton "Fermer" action Hide("image_viewer_screen") xalign 0.5 yalign 0.9 text_size 40
