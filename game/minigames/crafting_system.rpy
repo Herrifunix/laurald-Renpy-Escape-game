@@ -40,11 +40,12 @@ init python:
                 else:
                     player_inventory.add_item(new_item)
                     renpy.notify("Objets combinés avec succès : %s créé !" % new_item.name)
-                return True
+                # Removed 'return True' so the screen action doesn't return and end the interaction
         else:
             renpy.notify("Ces deux objets ne semblent pas aller ensemble.")
 
-        return False
+        # Removed 'return False' so the screen action doesn't return and end the interaction
+        return
 
     def create_item_by_id(item_id):
         if item_id == "carte_complete":

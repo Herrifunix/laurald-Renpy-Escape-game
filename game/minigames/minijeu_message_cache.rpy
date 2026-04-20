@@ -13,6 +13,8 @@ init python:
             self.revealed_cells = {}
             self.is_completed = False
             self.total_cells_approx = 0
+            self.fully_revealed_count = 0
+            self._cached_chunks = {}
 
             # Pre-create standard alpha transforms
             self.alpha_imgs = {
@@ -53,7 +55,11 @@ init python:
                 w = min(grid, revealed_r.width - x)
                 h = min(grid, revealed_r.height - y)
                 if w > 0 and h > 0:
-                    chunk = revealed_r.subsurface((x, y, w, h))
+                    cache_key = (a, cx, cy)
+                    chunk = self._cached_chunks.get(cache_key)
+                    if chunk is None:
+                        chunk = revealed_r.subsurface((x, y, w, h))
+                        self._cached_chunks[cache_key] = chunk
                     rv.blit(chunk, (x, y))
                     
             return rv
@@ -79,7 +85,11 @@ init python:
                         if cell[0] >= 0 and cell[1] >= 0:
                             current_alpha = self.revealed_cells.get(cell, 0.0)
                             if current_alpha < 1.0:
-                                self.revealed_cells[cell] = min(1.0, current_alpha + 0.015)
+                                new_alpha = min(1.0, current_alpha + 0.015)
+                                self.revealed_cells[cell] = new_alpha
+                                # On détecte quand une cellule atteint 80% (0.8) plutôt que de recalculer à chaque fois
+                                if current_alpha < 0.8 and new_alpha >= 0.8:
+                                    self.fully_revealed_count += 1
                                 added = True
                         
             if added:
@@ -87,8 +97,7 @@ init python:
                 
                 # Victoire si 60% de la zone est révélée
                 if self.total_cells_approx > 0:
-                    fully_revealed = sum(1 for v in self.revealed_cells.values() if v >= 0.8)
-                    if fully_revealed > (self.total_cells_approx * 0.6) and not self.is_completed:
+                    if self.fully_revealed_count > (self.total_cells_approx * 0.6) and not self.is_completed:
                         self.is_completed = True
                         return True # Renvoie True à l'_return de l'écran
 
