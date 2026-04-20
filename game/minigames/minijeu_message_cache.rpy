@@ -1,4 +1,4 @@
-﻿# game/minijeu_message_cache.rpy
+# game/minijeu_message_cache.rpy
 
 init python:
     import pygame

@@ -1,4 +1,4 @@
-﻿# TODO: Translation updated at 2022-05-04 16:37
+# TODO: Translation updated at 2022-05-04 16:37
 
 translate chinese strings:
     # game/ActionEditor.rpy:269

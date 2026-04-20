@@ -1,4 +1,4 @@
-﻿# crafting_system.rpy
+# crafting_system.rpy
 
 # Définition des recettes de craft par ID
 define craft_recipes = {

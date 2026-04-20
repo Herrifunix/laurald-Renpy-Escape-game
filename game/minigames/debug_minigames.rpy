@@ -1,4 +1,4 @@
-﻿# debug_minigames.rpy
+# debug_minigames.rpy
 
 # Active a la demande pour tester les mini-jeux sans avancer l'histoire.
 default debug_minigame_mode = False

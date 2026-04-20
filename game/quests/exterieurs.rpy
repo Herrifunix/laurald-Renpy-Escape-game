@@ -1,4 +1,4 @@
-﻿default has_cle_cloitre = False
+default has_cle_cloitre = False
 default met_pnj_entree = False
 
 screen exterieur_parvis_screen():
@@ -36,12 +36,17 @@ label exterieur_parvis:
 
 label entrer_cathedrale_garde:
     hide screen exterieur_parvis_screen
+    show hotesse at center
     if not met_pnj_entree:
-        "Un employé se dresse devant les grandes portes en croisant les bras."
-        "Employé" "Désolé, la cathédrale n'est pas encore ouverte au public. Il y a des préparatifs en cours pour un événement, revenez plus tard !"
+        "Une hôtesse se dresse devant les grandes portes en vous souriant légèrement."
+        "Hôtesse" "Désolé, la cathédrale n'est pas encore ouverte au public. Il y a des préparatifs en cours pour un événement."
+        show hotesse bye at center
+        "Hôtesse" "Revenez plus tard !"
         $ met_pnj_entree = True
     else:
-        "Employé" "Je vous l'ai déjà dit, l'entrée est interdite pour le moment."
+        show hotesse triste at center
+        "Hôtesse" "Je vous l'ai déjà dit, l'entrée est toujours interdite pour le moment."
+    hide hotesse
     jump exterieur_parvis
 
 label exterieur_ouest:
@@ -87,3 +92,4 @@ label trouver_cle_cloitre:
         
     $ renpy.notify("Vous avez obtenu la Clé du Cloître !")
     jump exterieur_est
+

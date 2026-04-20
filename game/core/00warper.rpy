@@ -1,4 +1,4 @@
-﻿python early hide:
+python early hide:
 
     @renpy.atl_warper
     def power_in2(x):

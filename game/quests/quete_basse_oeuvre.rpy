@@ -1,5 +1,5 @@
-# Définition du NPC "Agnès" (utilise l'image de moine par défaut si pas d'image)
-image agnes = "images/Le_moine.webp"
+# Définition du NPC "Agnès" 
+image agnes = "images/personnages/soeur.png"
 define agnes_char = Character("Sœur Agnès",
                         image="agnes",
                         color="#4a7a8c",
@@ -32,6 +32,7 @@ label basse_oeuvre:
                 has_lunettes = any(item.item_id == "lunettes_agnes" for item in player_inventory.get_items())
 
             if has_lunettes:
+                show agnes lunettes at center
                 agnes_char "Oh ! Mes lunettes ! Je n'y croyais plus."
                 $ player_inventory.remove_item(next(item for item in player_inventory.get_items() if item.item_id == "lunettes_agnes"))
                 agnes_char "Tenez, prenez ceci. C'est la moitié d'une vieille clé que j'ai trouvée dans les archives."
@@ -49,9 +50,7 @@ label basse_oeuvre:
                 agnes_char "Elles doivent être là-bas..."
     else:
         # Dialogue post-quête
-        show agnes at center
-        agnes_char "Merci encore pour mes lunettes. J'espère que cette moitié de clé vous sera utile."
-    
+          show agnes lunettes at center
     # On reste dans la pièce
     $ _game_menu_screen = None
 label boucle_basse_oeuvre:
