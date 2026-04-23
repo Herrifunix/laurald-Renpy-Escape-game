@@ -21,6 +21,7 @@ screen exterieur_est_screen():
     text "Chevet Est de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
     textbutton "Retour au Parvis" action Jump("exterieur_parvis") xalign 0.1 yalign 0.5 text_size 30 background "#333b"
+    textbutton "Observer la mosaïque au mur" action Jump("visiter_mosaique") xalign 0.8 yalign 0.5 text_size 30 background "#333b"
     if not has_cle_cloitre:
         textbutton "Inspecter les recoins" action Jump("trouver_cle_cloitre") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
 
