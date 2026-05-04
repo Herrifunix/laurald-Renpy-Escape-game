@@ -64,7 +64,10 @@ init:
 image bg bureau = "images/bureau.png"
 image dim = "#0008"
 image bg accueil = "images/portail-nord.png"
-image bg portail_sud = "images/portail-sud.png"
+image bg portail_nord = Transform("images/Portail-Nord copy.png", xsize=1920, ysize=1080)
+image bg portail_sud = Transform("images/Parvis-portail-Sud.png", xsize=1920, ysize=1080)
+image bg chevet_est = Transform("images/Est-Chevet.png", xsize=1920, ysize=1080)
+image bg cloitre_ouest = Transform("images/Portail-Ouest-BasseOeuvre.png", xsize=1920, ysize=1080)
 image bg perso = "images/perso.png"
 image bg kiosque = "images/kiosque.png"
 image MOINE = "images/Le_moine.webp"

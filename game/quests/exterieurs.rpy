@@ -29,7 +29,7 @@ screen exterieur_est_screen():
 label exterieur_parvis:
     hide screen exterieur_ouest_screen
     hide screen exterieur_est_screen
-    scene bg accueil
+    scene bg portail_nord
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
     show screen exterieur_parvis_screen
     pause
@@ -52,8 +52,7 @@ label entrer_cathedrale_garde:
 
 label exterieur_ouest:
     hide screen exterieur_parvis_screen
-    # Vous pouvez changer 'bg accueil' par un background specifique à l'ouest plus tard
-    scene bg accueil
+    scene bg cloitre_ouest
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
     show screen exterieur_ouest_screen
     pause
@@ -72,8 +71,7 @@ label tentative_entree_cloitre:
 
 label exterieur_est:
     hide screen exterieur_parvis_screen
-    # on utilise portail_sud ou une autre image en attendant mieux
-    scene bg portail_sud
+    scene bg chevet_est
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
     show screen exterieur_est_screen
     pause
