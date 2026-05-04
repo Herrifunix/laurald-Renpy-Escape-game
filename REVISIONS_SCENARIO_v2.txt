@@ -1,0 +1,528 @@
+# 📝 RÉVISIONS DU SCÉNARIO - Notes de Conception
+
+## ⚖️ RÔLES DES PNJs - CLARIFICATION IMPORTANTE
+
+### Sœur Agnès (PNJ existant dans le jeu)
+- **Rôle:** Confier les tâches pratiques et les quêtes au joueur
+- **Tâches associées:** 
+  - Retrouver ses lunettes perdues (près du chœur) — **quête existante et importante**
+  - Retrouver des livres éparpillés (manuscrits de la Basse-Œuvre)
+  - Remettre en ordre une chapelle latérale
+  - Apporter des bougies aux autels
+- **Dialogue:** Simple, centré sur les objets à trouver et les tâches matérielles
+
+### L'Évêque Milon de Nanteuil (PNJ existant)
+- **Rôle:** Guide historique et narrateur ; fournit les explications et contexte historique
+- **Fonction narrative:**
+  - Explique l'histoire de la cathédrale (1225, effondrement 1284, transept, horloge, etc.)
+  - Commente les chaînes de quêtes pour ancrer chaque énigme dans l'histoire réelle
+  - Délivre les "fragments historiques" au joueur (textes pédagogiques à relire)
+  - Offre des indices narratifs reliant les tâches de Sœur Agnès au fil rouge (horloge/engrenages)
+- **Dialogue:** Riche, détaillé, en vieux français ; réactions émotives et explicatives
+
+---
+
+## CONTEXTE
+L'utilisateur demande une refonte du scénario d'escape game pour mieux intégrer:
+- Les mécaniques existantes (bougie, assemblage, quêtes)
+- Une progression narrative plus cohérente
+- Un fil rouge clairement défini
+- Une utilisation répétée des mécaniques principales
+
+---
+
+## 🎯 OBJECTIF PRINCIPAL - LE FIL ROUGE
+
+**TROUVER LES ENGRENAGES POUR RÉPARER L'HORLOGE ASTRONOMIQUE**
+
+- L'horloge astronomique est le cœur du mystère
+- Elle est actuellement brisée/arrêtée
+- Réparer l'horloge = ouvrir un portail pour ramener l'évêque à 1225
+- Toutes les quêtes et énigmes mènent à des engrenages ou aux connaissances nécessaires
+
+
+---
+
+## 🎭 NOUVEAU DÉBUT - ACTE 1
+
+### Rencontre avec l'Évêque Milon
+
+**Situation actuelle (à MODIFIER):**
+- L'évêque est perdu et dénié
+- Le joueur résout les énigmes directement
+
+**Nouvelle situation:**
+- L'évêque bloque l'entrée à la cathédrale
+- "Vous ne pouvez pas entrer! Vous ne connaissez pas assez bien ma cathédrale!"
+- **Condition pour progresser:** Le joueur doit PROUVER sa connaissance de Beauvais
+
+### Fil narratif:
+1. Évêque refuse l'accès
+2. Joueur doit explorer et APPRENDRE l'histoire de Beauvais
+3. Une fois suffisamment informé, l'évêque le laisse entrer
+4. À l'intérieur, découverte de l'horloge brisée
+5. L'évêque révèle: "C'est l'horloge astronomique qui m'a envoyé ici. En y touchant, j'ai été projeté dans le futur."
+6. **Objectif:** Réparer l'horloge pour le renvoyer
+
+
+---
+
+## ⚙️ LE FIL ROUGE: LES ENGRENAGES
+
+### Concept
+- L'horloge a besoin de 4-5 engrenages principaux
+- Chaque engrenage se trouve par une quête ou une exploration
+- Les engrenages peuvent être combinés pour former des pièces plus grandes
+- L'assemblage final de l'horloge est la victoire
+
+### Les Engrenages à Trouver
+1. **Engrenage de la Rosace**
+   - Trouvé après avoir résolu l'énigme de la géométrie
+   - Puzzle sur la structure de la rosace
+   - Engrenage: "L'ordre cosmique"
+
+2. **Engrenage des Orgues**
+   - Trouvé après avoir joué la bonne mélodie plusieurs fois
+   - L'orgue peut être réutilisé avec différentes mélodies
+   - Engrenage: "L'harmonie du temps"
+
+3. **Engrenage du Cryptex**
+   - Trouvé après décryptage
+   - Engrenage: "Le secret ancien"
+
+4. **Engrenage de la Cathédrale**
+   - Trouvé après accomplissement de la quête confiée par Sœur Agnès
+   - Engagement communautaire
+   - Engrenage: "La pierre éternelle"
+
+5. **Engrenage de l'Horloge elle-même**
+   - Trouvé après exploration approfondie
+   - Hidden/Easter egg
+   - Engrenage: "Le temps cyclique"
+
+
+---
+
+## 📿 QUÊTES DE SŒUR AGNÈS - À INTÉGRER
+
+### Concept
+- Sœur Agnès confie des tâches pratiques au joueur pour qu'il retrouve des objets ou aide à des travaux.
+- L'Évêque Milon commente et explique l'histoire derrière chaque quête (contexte historique, faits, dates).
+- Ensemble, ils créent une progression narrative riche : Sœur Agnès = les tâches concrètes, l'Évêque = le savoir historique.
+
+### Quêtes proposées
+1. **Retrouver des livres éparpillés**
+   - Localisation: bibliothèque ou dépôt canonial
+   - Récompense: fragment de parchemin (pour crafting) + indices historiques
+
+2. **Contribuer à la restauration symbolique de vitraux**
+   - Mécanique: assembler des fragments de verre (minijeu)
+   - Récompense: fragment matériel + commentaire historique de l'évêque
+
+3. **Remettre en ordre une chapelle latérale**
+   - Exploration: trouver objets liturgiques et repères
+   - Récompense: Engrenage de la cathédrale + approbation de l'évêque
+
+4. **Apporter des bougies aux autels**
+   - Utilisation de la bougie du crafting
+   - Récompense: bénédiction narrative + fragment lumineux
+
+5. **Écouter le récit de l'histoire locale**
+   - Dialogue approfondi avec l'évêque (séquence pédagogique)
+   - Récompense: connaissances historiques utiles pour progresser
+
+
+---
+
+## 🕯️ MÉCANIQUE DE LA BOUGIE - À UTILISER
+
+### Concept actuel (à exploiter)
+- La bougie existe dans le crafting system
+- Peut être combinée avec d'autres objets
+- Dégage une lumière/chaleur
+
+### Nouvelles utilisations
+1. **Illuminer des zones sombres**
+   - Révéler des indices cachés
+   - Exemple: Crypt, caves sous la cathédrale
+
+2. **Interagir avec l'évêque**
+   - Apporter des bougies aux autels
+   - Quête: "5 bougies à placer"
+
+3. **Révéler des messages cachés**
+   - Parchemins invisibles à la chaleur
+   - Indices cryptés qui s'affichent avec la chaleur
+
+4. **Actionner des mécanismes**
+   - Combinaison: Bougie + ancien mécanisme = activation
+   - Exemple: Chauffer du mercure pour faire tomber un objet
+
+5. **Crafting avancé**
+   - Combiner: Bougie + cire ancienne = clé de cire
+   - Combustible pour des lampes
+
+
+---
+
+## 🔧 MÉCANIQUE D'ASSEMBLAGE - À RÉORGANISER
+
+### Problème actuel
+- Trop de mini-jeux d'assemblage à la suite
+- Pas d'importance narrative
+
+### Solution proposée
+1. **Assemblage fragmenté dans le temps**
+   - Ne pas assembler "l'horloge" d'un coup
+   - Assembler les pièces au fur et à mesure
+   - Exemple:
+     - Session 1: Assembler engrenage 1 (Rosace)
+     - Session 2: Assembler engrenage 2 (Orgues)
+     - Session 3: Combiner engrenages 1+2
+     - Finale: Assembler l'horloge complète
+
+2. **Récompenses pour chaque assemblage**
+   - Chaque pièce assemblée = nouvelle capacité/entrée
+   - Exemple: Engrenage 1 assemblé = accès à la salle des orgues
+
+3. **Crafting d'objets útiles**
+   - Fragments + bougie = clé
+   - Fragments + parchemin = carte
+   - Engrenage + lubrifiant ancien = engrenage fonctionnel
+
+4. **Gradation de difficulté**
+   - Premières assemblages: 3-4 pièces simples
+   - Assemblages finaux: 7-8 pièces complexes avec rotations
+
+
+---
+
+## 🎵 ORGUE - À RÉUTILISER PLUSIEURS FOIS
+
+### Concept actuel
+- Mini-jeu une seule fois
+- Donne une clé
+
+### Nouvelle approche
+1. **Première visite: Apprentissage**
+   - Découvrir l'orgue
+   - Jouer une mélodie simple
+   - Récompense: Engrenage 1
+
+2. **Deuxième visite: Déverrouillage**
+   - Jouer une mélodie plus complexe
+   - Récompense: Accès à section cachée
+
+3. **Troisième visite: Révélation**
+   - Jouer une mélodie ancienne (donnée par l'évêque)
+   - Déverrouille: Chambre secrète avec indices
+
+4. **Mélodies à créer (à donner plus tard)**
+   - Mélodie 1: [À définir]
+   - Mélodie 2: [À définir]
+   - Mélodie 3: [À définir]
+
+### Structure narrative
+- Chaque visite à l'orgue = un indice de plus
+- Les mélodies racontent l'histoire de Beauvais
+- Finale: L'horloge résonne avec la dernière mélodie
+
+
+---
+
+## 💡 INDICES ESSENTIELS - À DISPERSER
+
+### Indice 1: L'origine de la faille
+**Dialogue avec l'évêque:**
+"C'est l'horloge astronomique qui m'a envoyé ici. 
+En touchant ses engrenages, j'ai senti une énergie étrange, 
+comme si le temps lui-même changeait autour de moi."
+
+### Indice 2: La solution
+**Trouvé dans la crypte:**
+"Pour arrêter la faille temporelle, il faut synchroniser 
+les quatre mouvements du cosmos: la rotation de la terre, 
+la course du soleil, le cycle de la lune, 
+et les battements du cœur de la cathédrale."
+
+### Indice 3: Le mécanisme
+**L'évêque:**
+"L'horloge astronomique était gérée par quatre engrenages 
+représentant les quatre dimensions de l'univers médiéval. 
+Si l'un manque, tout devient chaos."
+
+### Indice 4: La finalité
+**Le vitrail secret:**
+"Un portail s'ouvrira quand l'horloge retrouvera sa force. 
+L'évêque pourra alors retourner à son époque, 
+porteur de la connaissance du futur."
+
+
+---
+
+## 🎮 PROGRESSION PROPOSÉE
+
+### Acte 1: Préparation (15 min)
+- Rencontre l'évêque qui refuse l'accès
+- Explorer l'extérieur pour apprendre sur Beauvais
+- Prouver sa connaissance
+- Débloquer l'accès à la cathédrale
+
+### Acte 2: Exploration & Quêtes (30 min)
+- Rencontrer l'évêque
+- Première quête: Retrouver 3 livres
+- Deuxième quête: Visiter les orgues
+- Troisième quête: Résoudre l'énigme de la Rosace
+- Déverrouiller sections cachées progressivement
+
+### Acte 3: Assemblage (20 min)
+- Combiner les engrenages trouvés
+- Assembler l'horloge par étapes
+- Révéler les indices finaux
+- Préparation pour l'épilogue
+
+### Acte 4: Révélation & Retour (10 min)
+- L'horloge fonctionne
+- Portail s'ouvre
+- L'évêque retourne à 1225
+- Écran de victoire avec contexte historique
+
+
+---
+
+## 🔄 FLUX DE MÉCHANIQUES
+
+### Session 1 - EXPLORATION
+Mécaniques:
+- Navigation simple
+- Dialogue avec PNJs
+- Collecte d'objets
+
+### Session 2 - QUÊTES DE L'ÉVÊQUE
+Mécaniques:
+- Quête 1: Chercher 3 livres
+- Récompense: Fragments + Engrenage 1
+
+### Session 3 - ÉNIGMES
+Mécaniques:
+- Rosace: Puzzle énigmatique
+- Récompense: Engrenage 2
+
+### Session 4 - CRAFTING 1
+Mécaniques:
+- Assembler Engrenage 1 (4 pièces)
+- Utiliser bougie pour révéler indice
+- Récompense: Accès section orgues
+
+### Session 5 - ORGUE
+Mécaniques:
+- Jouer mélodie simple
+- Jouer mélodie complexe
+- Récompense: Engrenage 3
+
+### Session 6 - QUÊTES CONTINUES
+Mécaniques:
+- Quête 2: Nettoyer chapelle
+- Quête 3: Placer 5 bougies
+- Récompense: Engrenage 4
+
+### Session 7 - CRAFTING 2
+Mécaniques:
+- Assembler Engrenage 2 (5 pièces)
+- Combiner Engrenage 1 + 2
+- Récompense: Section secrète accessible
+
+### Session 8 - CRYPTEX & DÉCOUVERTE
+Mécaniques:
+- Résoudre Cryptex
+- Découvrir l'horloge brisée
+- Récompense: Engrenage 5 + Clé secrète
+
+### Session 9 - FINAL ASSEMBLY
+Mécaniques:
+- Assembler tous engrenages
+- Installer horloge complète (7-8 pièces)
+- Activation finale
+
+### Session 10 - ÉPILOGUE
+Mécaniques:
+- Portail s'ouvre
+- Retour de l'évêque
+- Écran victoire
+
+
+---
+
+## 🧩 SUITES DE QUÊTES SUPPLÉMENTAIRES (1 ENGRENAGE PAR CHAÎNE)
+
+### Principe: recentrer sur l'histoire
+- Chaque chaîne doit raconter un épisode ou un fait historique lié à la cathédrale de Beauvais (événements, usages liturgiques, restauration, anecdotes locales), plutôt que de détailler des mesures ou des techniques architecturales.
+- Les engrenages restent des objets de gameplay: leur apparence et leur récupération servent de prétexte ludique pour délivrer des connaissances historiques vérifiables.
+- Toute fiction reste tolérée uniquement pour le mécanisme de jeu (portail temporel, horloge magique), mais les descriptions, dates et repères historiques doivent rester réalistes et vérifiables.
+
+### Chaîne 1 - Engrenage: Histoire du vitrail (Rosace)
+1. Sœur Agnès demande au joueur d'observer la rosace et d'identifier les scènes bibliques et les noms de donateurs visibles dans le vitrail.
+2. En recherchant les cartouches et inscriptions, le joueur découvre une mention d'un donateur local (texte partiellement effacé) et une date probable.
+3. En chauffant doucement le parchemin retrouvé (bougie), une encre s'atténue/réapparaît et indique un emplacement de dépôt dans le transept.
+4. Le dépôt contient un fragment d'engrenage décoré de motifs du vitrail, accompagné d'une note expliquant le rôle pédagogique des verrières au Moyen Âge.
+5. L'Évêque commente : il raconte brièvement la provenance de la commande des vitraux et son usage pour instruire les fidèles (fragment historique remis au joueur).
+6. Récompense narrative: Engrenage du Vitrail (contexte historique acquis).
+
+### Chaîne 2 - Engrenage: Les restaurations et traces du temps
+1. Un dossier d'entretien conservé par le sacristain relate des campagnes de restauration successives (indices sur interventions et matériaux).
+2. Le joueur consulte ces fiches et retrouve des annotations sur des réparations anciennes (traces, numéros de campagne).
+3. En recoupant les annotations avec un plan restreint du chevet, on localise une boîte d'atelier cachée.
+4. La boîte contient pièces et outillage ancien, témoignages matériels des restaurations.
+5. L'évêque explique la continuité des soins portés à l'édifice au fil des siècles.
+6. Récompense: Engrenage des Restaurations (et un fragment d'histoire sur les soins au monument).
+
+### Chaîne 3 - Engrenage: Le chœur et l'effondrement (1284)
+1. Sœur Agnès montre un parchemin ancien qui raconte l'effondrement du chœur (événement marquant de l'histoire de Beauvais).
+2. Le joueur doit reconstituer la chronologie: projet ambitieux du XIIIe siècle, fragilité structurelle, effondrement et conséquences humaines.
+3. Des indices (lettres, mentions de dates) demandent l'usage de la bougie pour révéler des annotations marginales.
+4. Le message renvoie à une cache liée au mobilier liturgique du chœur, conservant des comptes du chantier.
+5. L'Évêque commente : le compte contient une pièce mécanique datée et narre l'impact émotionnel et pratique de l'effondrement (1284) sur la cathédrale (fragment historique).
+6. Récompense: Engrenage du Chœur (lié à l'événement de 1284).
+
+### Chaîne 4 - Engrenage: L'iconographie des portails
+1. L'Évêque demande au joueur d'identifier quelques scènes majeures sculptées sur les portails (hagiographies, scènes du Jugement, vies de saints) — test direct de connaissance.
+2. En notant les épisodes représentés, le joueur retrouve une répétition d'un symbole particulier.
+3. Ce symbole correspond à la marque d'un atelier de sculpteurs mentionné dans un document d'archives.
+4. Suivre la piste documentaire mène à une caisse de chantier anciennement utilisée par les ateliers.
+5. La caisse contient éléments et fragments de mécanique ayant appartenu à l'entretien des portails.
+6. Récompense: Engrenage des Portails (l'Évêque explique le rôle des portails dans la transmission iconographique chrétienne).
+
+### Chaîne 5 - Engrenage: Musique et liturgie (Grand Orgue)
+1. L'orgue est présenté dans son rôle liturgique: accompagner offices et fêtes.
+2. Sœur Agnès confie une ancienne partition évoquant des chants et usages liturgiques propres à Beauvais.
+3. Le joueur, en explorant l'instrument et en éclairant la partition, trouve des annotations et une clef de maintenance.
+4. À chaque visite, la partition révèle un nouveau détail (dates de fêtes, noms d'organistes, usages liturgiques).
+5. Le tiroir du buffet livre des pièces mécaniques anciennes. L'Évêque commente l'histoire musicale de Beauvais et les rôles des organistes successifs (fragment historique).
+6. Récompense: Engrenage de la Musique (et savoir sur la liturgie locale).
+
+### Chaîne 6 - Engrenage: Vitraux du chevet et donateurs
+1. Sœur Agnès demande au joueur d'observer les vitraux du chevet et d'identifier les donateurs locaux et événements narrés.
+2. En reconstituant l'ordre des scènes, le joueur identifie des noms et dates qui évoquent une campagne de commande.
+3. L'analyse des fragments de verre et des cartouches mène à une boîte d'atelier contenant des outils de verrier.
+4. Un ajout: chauffer un verre spécifique révèle un numéro de lot gravé par un artisan.
+5. Ce numéro ouvre un coffre d'archives restreint avec une pièce mécanique. L'Évêque commente les noms des donateurs et leur importance pour la mémoire locale.
+6. Récompense: Engrenage des Vitraux (connaissance des donateurs et campagnes).
+
+### Chaîne 7 - Engrenage: Parvis, usages civiques et mémoire
+1. Sœur Agnès demande au joueur de découvrir les pierres gravées et inscriptions anciennes sur le parvis liées à cérémonies publiques et marchés.
+2. La reconstitution d'un fragment de registre local (trouvé dans des archives) montre l'usage du parvis pour proclamations et vies civiques.
+3. Suivre ces traces conduit à un emplacement de stockage d'outils de chantier ou de mobilier urbain.
+4. On y trouve des pièces métalliques récupérées des opérations d'entretien.
+5. L'Évêque contextualise: le parvis comme scène de la mémoire collective et point de rencontre de la cité (fragment historique).
+6. Récompense: Engrenage du Parvis (et récit des usages civiques).
+
+### Chaîne 8 - Engrenage: Chronologie des campagnes de construction
+1. Sœur Agnès demande au joueur de reconstituer la chronologie des grandes campagnes (par phases et conséquences humaines) à partir de documents fragmentés.
+2. Des documents (lettres, comptes) fournissent des indices à retrouver dans plusieurs espaces du parcours.
+3. La remise en ordre des indices permet d'ouvrir un casier d'archives renfermant une pièce de mécanisme.
+4. Cette pièce illustre les changements de méthode entre campagnes successives.
+5. L'Évêque commente l'impact des choix de chantier sur la vie de la ville et la chronologie générale (années clés: 1225, 1284, 1500, 1569, 1573, 1793, 1878, 1979).
+6. Récompense: Engrenage de la Chronologie.
+
+### Chaîne 9 - Engrenage: Reliques, dévotions et chapelles
+1. Sœur Agnès demande au joueur d'explorer une chapelle latérale qui conserve des objets dévotionnels et des récits de dévotions locales.
+2. Le joueur rassemble des indices sur une relique et sa provenance (témoignages, inscriptions).
+3. La bougie révèle une note collée à l'arrière d'un cadre ou d'un reliquaire.
+4. Le texte oriente vers un meuble discret où est cachée une pièce mécanique associée à la dévotion.
+5. L'Évêque explique le sens de la relique pour la communauté et la spiritualité médiévale (fragment historique).
+6. Récompense: Engrenage de la Dévotion.
+
+### Chaîne 10 - Engrenage: L'horloge et la mémoire des restaurations
+1. Les pièces assemblées renvoient à la lecture des archives sur l'entretien des instruments et mécanismes de la cathédrale.
+2. Le joueur situe, à partir des indices rassemblés, les campagnes qui affectèrent les systèmes temporels et mécaniques.
+3. L'évêque partage un récit reliant sa situation (mécanisme temporel fictif) à la longue histoire des soins portés à l'édifice.
+4. L'assemblage final symbolique combine les pièces issues des différentes campagnes historiques.
+5. La réussite met en scène un épilogue qui réinscrit l'événement du joueur dans la mémoire locale.
+6. Récompense: Engrenage Maître (avec résumé historique des campagnes et événements).
+
+### Remarque d'équilibrage
+- Répartir ces chaînes pour alterner narration historique et mini-jeux afin d'éviter des séquences répétitives.
+- Chaque récompense doit inclure un court texte historique qu'on peut relire via le journal du joueur.
+- Lorsqu'une mention précise d'une date, d'un nom ou d'un fait est utilisée, garder une note interne de vérification historique (source idéale: documentation locale) pour éviter toute erreur factuelle.
+
+
+## Sources historiques (extraits détaillés à intégrer)
+- Origines et premières communautés : christianisation ancienne (Lucien et compagnons), naissance d'une communauté dès le IIIe siècle et présence d'une première chapelle/église carolingienne (Basse-Œuvre) dont subsistent des travées.
+- Basse-Œuvre et incendie de 1225 : l'ancienne cathédrale (Basse-Œuvre) est ravagée vers 1225 ; l'évêque Milon de Nanteuil (1217–1234) lance la construction d'un nouvel édifice en style ogival (art français), ambitieuse et destinée à surpasser Amiens.
+- Début des travaux et fondations : chantier engagé autour de 1230, fondations parfois profondes (>10 m) sur craie locale (carrières de Beauvais et Saint-Martin-le-Nœud), élévation progressive du chœur (base achevée vers 1240, chœur consacré et voûté vers 1260).
+- Hauteur record : la voûte du chœur atteint environ 48,50 m (record de la voûte gothique en pierre).
+- Effondrement de 1284 : en novembre 1284 (catastrophe marquante), des arcs-boutants cèdent sous une tempête provoquant l'écroulement partiel des voûtes du chœur ; reconstruction longue (XIIIe–XIVe s.), renforcement des travées, travaux prolongés jusqu'aux années 1340–1347.
+- Périodes troublées : peste noire, guerre de Cent Ans, siège de Beauvais (1472) — événements locaux importants influençant le chantier et la vie de la cité.
+- Reprise et transept (XVIe siècle) : reprise des travaux vers 1500 sous Martin Chambiges (avec Jean Vast), transept élevé entre 1500 et milieu du XVIe s., voûtes très hautes (≈48,5 m), tour-lanterne achevée 1569.
+- Flèche et effondrement (1573) : la tour-lanterne surmontée d'une flèche (≈151–153 m selon sources) s'effondre quelques années après son achèvement (effondrement majeur en avril 1573), entraînant l'abandon d'une nef complète et laissant l'édifice inachevé.
+- Révolution et XIXe siècle : pillages de 1793, dispersion et mise à l'abri d'éléments du trésor ; XIXe siècle de tentatives de restauration (Viollet‑le‑Duc, projets divers), émergence d'interventions patrimoniales et de débats sur la conservation.
+- Horloges et orgues : la cathédrale conserve une horloge médiévale (horloge en coin, fin XIIIe-début XIVe, complétée et réparée au fil des siècles) et une grande horloge astronomique du XIXe siècle (œuvre d'Auguste‑Lucien Vérité, construction 1865–1868, installation/présentation au public dans les années 1870); le grand orgue moderne a été reconstruit/inauguré en 1979 (recyclage d'éléments anciens).
+- XXe–XXIe siècles : protections durant la Seconde Guerre mondiale (vitrages mis à l'abri), interventions structurelles (1960s tirants, 1990s étais/étayages), travaux de restauration du XXIe siècle (charpente, couvertures, capteurs, campagnes 2012–2025+, chantier pour le 800e anniversaire commencé 2022 et prévu jusqu'en milieu des années 2020).
+- Données matérielles et dimensions : matériaux principaux = craie (Coniacien) issue des carrières locales ; dimensions notables : hauteur sous voûtes ≈48,50 m, diamètre des rosaces ≈11 m, longueur totale ≈72,5 m, transept ≈58,6 m (int.).
+
+*Remarque de précision :* ces éléments proviennent du texte de l'Association Beauvais Cathédrale (ABC) que vous avez fourni. Utilisez ces points pour composer les dialogues de l'évêque et les textes historiques remis au joueur. Pour toute mention très précise (dates exactes, chiffres divergents), conservez une annotation interne et vérifiez la formulation finale contre la source ABC avant publication.
+
+
+
+---
+
+## ✨ CHANGEMENTS CLÉS À FAIRE
+
+### À MODIFIER
+1. Début: Évêque bloque l'accès jusqu'à preuve de connaissance
+2. Intégrer Sœur Agnès comme pourvoyeuse de tâches pratiques (quêtes simples, retrouver objets)
+3. Rendre l'Évêque Milon guide historique primaire : il commente chaque quête avec contexte historique et délivre des "fragments d'histoire"
+4. Utiliser la bougie dans plusieurs contextes
+5. Rendre l'orgue réutilisable avec 3 mélodies (chaque visite du joueur = nouvelles énigmes de mélodies)
+6. Créer système d'assemblage progressif des engrenages
+7. Ajouter indices narratifs dispersés (dialogues, documents, parchemins)
+8. Fil rouge: Engrenages → Horloge → Portail temporel pour ramener l'Évêque à 1225
+
+### À CONSERVER
+1. Système d'inventaire
+2. Système de crafting de base (essentiels pour les énigmes)
+3. Les mini-jeux existants (recontextualisés dans les quêtes)
+4. L'atmosphère générale (vieux français, ambiance médiévale)
+5. Sœur Agnès en tant que PNJ avec ses lunettes (quête existante et importante)
+6. Narration en français médiéval
+
+### À CRÉER
+1. Mélodies pour l'orgue (3)
+2. Fragments d'engrenage (15-20)
+3. Quêtes de Sœur Agnès détaillées (5-10 tâches pratiques : retrouver lunettes, livres, nettoyer chapelle, placer bougies, etc.)
+4. Zones cachées (3-4) : dépôts, caches, archives
+5. Dialogues de commentaire historique de l'Évêque (fragments historiques à remettre au joueur après chaque quête majeure)
+6. Indices dispersés (documents, parchemins, inscriptions) : 5-10
+
+
+---
+
+## 🎯 TEMPS ESTIMÉ
+
+- Exploration préalable: 10 min
+- Quêtes de Sœur Agnès: 15 min
+- Énigmes + Orgue: 15 min
+- Crafting progressif: 15 min
+- Assemblage final: 10 min
+- Épilogue: 5 min
+
+**Total: ~70 minutes** (flexible selon joueur)
+
+
+---
+
+## 📋 À CLARIFIER ULTÉRIEUREMENT
+
+1. Les 3 mélodies exactes pour l'orgue
+2. Les emplacements des engrenages
+3. Le design exact des quêtes de Sœur Agnès
+4. Les dialogues historiques détaillés de l'Évêque (explications et fragments historiques à remettre au joueur)
+5. L'emplacement des indices narratifs
+6. Les zones cachées précises
+7. Les fragments d'engrenages détaillés
+8. Le design final de l'horloge
+
+---
+
+**Ce document guide la restructuration du scénario.
+Les fichiers Ren'Py seront modifiés selon cette approche.**
