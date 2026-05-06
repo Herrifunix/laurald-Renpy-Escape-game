@@ -4,3 +4,4 @@
 **/*.save.bak
 **/navigation.json
 **/persistent
+log.txt

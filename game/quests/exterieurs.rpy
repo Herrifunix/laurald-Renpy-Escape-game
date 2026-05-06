@@ -4,9 +4,9 @@ default met_pnj_entree = False
 screen exterieur_parvis_screen():
     text "Parvis de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    # Navigation
-    textbutton "Aller vers le Chevet" action Jump("exterieur_est") xalign 0.1 yalign 0.5 text_size 30 background "#333b"
-    textbutton "Aller vers le Cloître" action Jump("exterieur_ouest") xalign 0.9 yalign 0.5 text_size 30 background "#333b"
+    # Navigation (flèches)
+    textbutton "<" action Jump("exterieur_ouest") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
+    textbutton ">" action Jump("exterieur_est") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
     
     # Entrée
     textbutton "Entrer dans la Cathédrale" action Jump("entrer_cathedrale_garde") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
@@ -14,22 +14,36 @@ screen exterieur_parvis_screen():
 screen exterieur_ouest_screen():
     text "Côté Cloître (Ouest)" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    textbutton "Retour au Parvis" action Jump("exterieur_parvis") xalign 0.1 yalign 0.5 text_size 30 background "#333b"
+    # Navigation (flèches)
+    textbutton ">" action Jump("exterieur_parvis") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
+    textbutton "<" action Jump("exterieur_nord") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
+    
     textbutton "Entrer dans le Cloître" action Jump("tentative_entree_cloitre") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
 
 screen exterieur_est_screen():
     text "Chevet Est de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    textbutton "Retour au Parvis" action Jump("exterieur_parvis") xalign 0.9 yalign 0.5 text_size 30 background "#333b"
-    textbutton "Observer la mosaïque au mur" action Jump("visiter_mosaique") xalign 0.2 yalign 0.5 text_size 30 background "#333b"
+    # Navigation (flèches)
+    textbutton "<" action Jump("exterieur_parvis") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
+    textbutton ">" action Jump("exterieur_nord") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
+    
+    textbutton "Observer la mosaïque au mur" action Jump("visiter_mosaique") xalign 0.5 yalign 0.2 text_size 30 background "#333b"
     if not has_cle_cloitre:
         textbutton "Inspecter les recoins" action Jump("trouver_cle_cloitre") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
+
+screen exterieur_nord_screen():
+    text "Portail Nord" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
+    
+    # Navigation (flèches)
+    textbutton "<" action Jump("exterieur_est") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
+    textbutton ">" action Jump("exterieur_ouest") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
 
 
 label exterieur_parvis:
     hide screen exterieur_ouest_screen
     hide screen exterieur_est_screen
-    scene bg portail_nord
+    hide screen exterieur_nord_screen
+    scene bg accueil
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
     show screen exterieur_parvis_screen
     pause
@@ -37,6 +51,9 @@ label exterieur_parvis:
 
 label entrer_cathedrale_garde:
     hide screen exterieur_parvis_screen
+    hide screen exterieur_ouest_screen
+    hide screen exterieur_est_screen
+    hide screen exterieur_nord_screen
     show hotesse at center
     if not met_pnj_entree:
         "Une hôtesse se dresse devant les grandes portes en vous souriant légèrement."
@@ -52,7 +69,9 @@ label entrer_cathedrale_garde:
 
 label exterieur_ouest:
     hide screen exterieur_parvis_screen
-    scene bg cloitre_ouest
+    hide screen exterieur_est_screen
+    hide screen exterieur_nord_screen
+    scene bg basse_oeuvre_ouest
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
     show screen exterieur_ouest_screen
     pause
@@ -71,11 +90,23 @@ label tentative_entree_cloitre:
 
 label exterieur_est:
     hide screen exterieur_parvis_screen
+    hide screen exterieur_ouest_screen
+    hide screen exterieur_nord_screen
     scene bg chevet_est
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
     show screen exterieur_est_screen
     pause
     jump exterieur_est
+
+label exterieur_nord:
+    hide screen exterieur_parvis_screen
+    hide screen exterieur_ouest_screen
+    hide screen exterieur_est_screen
+    scene bg portail_nord
+    play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
+    show screen exterieur_nord_screen
+    pause
+    jump exterieur_nord
 
 label trouver_cle_cloitre:
     hide screen exterieur_est_screen
