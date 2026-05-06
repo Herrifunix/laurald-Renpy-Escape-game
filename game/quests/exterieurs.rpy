@@ -5,8 +5,8 @@ screen exterieur_parvis_screen():
     text "Parvis de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
     # Navigation
-    textbutton "Aller vers le Cloître (Ouest)" action Jump("exterieur_ouest") xalign 0.1 yalign 0.5 text_size 30 background "#333b"
-    textbutton "Aller vers le Chevet (Est)" action Jump("exterieur_est") xalign 0.9 yalign 0.5 text_size 30 background "#333b"
+    textbutton "Aller vers le Chevet" action Jump("exterieur_est") xalign 0.1 yalign 0.5 text_size 30 background "#333b"
+    textbutton "Aller vers le Cloître" action Jump("exterieur_ouest") xalign 0.9 yalign 0.5 text_size 30 background "#333b"
     
     # Entrée
     textbutton "Entrer dans la Cathédrale" action Jump("entrer_cathedrale_garde") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
@@ -14,14 +14,14 @@ screen exterieur_parvis_screen():
 screen exterieur_ouest_screen():
     text "Côté Cloître (Ouest)" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    textbutton "Retour au Parvis" action Jump("exterieur_parvis") xalign 0.9 yalign 0.5 text_size 30 background "#333b"
+    textbutton "Retour au Parvis" action Jump("exterieur_parvis") xalign 0.1 yalign 0.5 text_size 30 background "#333b"
     textbutton "Entrer dans le Cloître" action Jump("tentative_entree_cloitre") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
 
 screen exterieur_est_screen():
     text "Chevet Est de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    textbutton "Retour au Parvis" action Jump("exterieur_parvis") xalign 0.1 yalign 0.5 text_size 30 background "#333b"
-    textbutton "Observer la mosaïque au mur" action Jump("visiter_mosaique") xalign 0.8 yalign 0.5 text_size 30 background "#333b"
+    textbutton "Retour au Parvis" action Jump("exterieur_parvis") xalign 0.9 yalign 0.5 text_size 30 background "#333b"
+    textbutton "Observer la mosaïque au mur" action Jump("visiter_mosaique") xalign 0.2 yalign 0.5 text_size 30 background "#333b"
     if not has_cle_cloitre:
         textbutton "Inspecter les recoins" action Jump("trouver_cle_cloitre") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
 
