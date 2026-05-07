@@ -1,42 +1,115 @@
 default has_cle_cloitre = False
 default met_pnj_entree = False
 
+transform pulse_alpha:
+    alpha 0.5
+    linear 1.0 alpha 1.0
+    linear 1.0 alpha 0.5
+    repeat
+
 screen exterieur_parvis_screen():
     text "Parvis de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    # Navigation (flèches)
-    textbutton "<" action Jump("exterieur_ouest") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
-    textbutton ">" action Jump("exterieur_est") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
+    # Navigation (flèches latérales)
+    button:
+        xalign 0.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_ouest")
+        background Solid("#0000") hover_background Solid("#0008")
+        text "<" align (0.5, 0.5) size 80 color "#fff"
+        
+    button:
+        xalign 1.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_est")
+        background Solid("#0000") hover_background Solid("#0008")
+        text ">" align (0.5, 0.5) size 80 color "#fff"
     
-    # Entrée
-    textbutton "Entrer dans la Cathédrale" action Jump("entrer_cathedrale_garde") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
+    # Entrée (Porte Centrale)
+    imagebutton:
+        # Ajustez xpos et ypos pour superposer exactement l'image sur le décor
+        xalign 0.295 yalign 0.84
+        idle "images/scenes/portes-avant.png"
+        hover Transform("images/scenes/portes-avant.png", zoom=1.05)
+        focus_mask True
+        action Jump("entrer_cathedrale_garde")
 
 screen exterieur_ouest_screen():
     text "Côté Cloître (Ouest)" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    # Navigation (flèches)
-    textbutton ">" action Jump("exterieur_parvis") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
-    textbutton "<" action Jump("exterieur_nord") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
+    # Navigation (flèches latérales)
+    button:
+        xalign 0.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_nord")
+        background Solid("#0000") hover_background Solid("#0008")
+        text "<" align (0.5, 0.5) size 80 color "#fff"
+        
+    button:
+        xalign 1.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_parvis")
+        background Solid("#0000") hover_background Solid("#0008")
+        text ">" align (0.5, 0.5) size 80 color "#fff"
     
-    textbutton "Entrer dans le Cloître" action Jump("tentative_entree_cloitre") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
+    # Entrée Basse Oeuvre
+    button:
+        xalign 0.45 yalign 0.65 xysize (350, 500)
+        action Jump("entrer_basse_oeuvre")
+        background Solid("#0000") hover_background Solid("#ffffff22")
+
+    # Entrée Cloître (partie rouge)
+    button:
+        xalign 0.85 yalign 0.65 xysize (300, 500)
+        action Jump("tentative_entree_cloitre")
+        background Solid("#0000") hover_background Solid("#ffffff22")
 
 screen exterieur_est_screen():
-    text "Chevet Est de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
+    text "Chevet de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    # Navigation (flèches)
-    textbutton "<" action Jump("exterieur_parvis") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
-    textbutton ">" action Jump("exterieur_nord") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
+    # Navigation (flèches latérales)
+    button:
+        xalign 0.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_parvis")
+        background Solid("#0000") hover_background Solid("#0008")
+        text "<" align (0.5, 0.5) size 80 color "#fff"
+        
+    button:
+        xalign 1.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_nord")
+        background Solid("#0000") hover_background Solid("#0008")
+        text ">" align (0.5, 0.5) size 80 color "#fff"
     
-    textbutton "Observer la mosaïque au mur" action Jump("visiter_mosaique") xalign 0.5 yalign 0.2 text_size 30 background "#333b"
+    # Interaction: Pierre pour la clé
     if not has_cle_cloitre:
-        textbutton "Inspecter les recoins" action Jump("trouver_cle_cloitre") xalign 0.5 yalign 0.8 text_size 40 background "#632b"
+        button:
+            xalign 0.7 yalign 0.85 xysize (200, 150)
+            action Jump("trouver_cle_cloitre")
+            background Solid("#0000") hover_background Solid("#ff03")
+            text "❗" align (0.5, 0.5) color "#ff0" hover_color "#ffff" size 80 at pulse_alpha
+
+    # Mosaïque
+    textbutton "Observer la mosaïque" action Jump("visiter_mosaique") xalign 0.5 yalign 0.15 text_size 30 background "#333b"
 
 screen exterieur_nord_screen():
     text "Portail Nord" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"
     
-    # Navigation (flèches)
-    textbutton "<" action Jump("exterieur_est") xalign 0.05 yalign 0.5 text_size 80 background "#0008"
-    textbutton ">" action Jump("exterieur_ouest") xalign 0.95 yalign 0.5 text_size 80 background "#0008"
+    # Navigation (flèches latérales)
+    button:
+        xalign 0.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_est")
+        background Solid("#0000") hover_background Solid("#0008")
+        text "<" align (0.5, 0.5) size 80 color "#fff"
+        
+    button:
+        xalign 1.0 yalign 0.5 xysize (150, 1080)
+        action Jump("exterieur_ouest")
+        background Solid("#0000") hover_background Solid("#0008")
+        text ">" align (0.5, 0.5) size 80 color "#fff"
+        
+    # Entrée Portail Nord
+    imagebutton:
+        xalign 0.35 yalign 0.65
+        idle "images/scenes/portes-nord.png"
+        hover Transform("images/scenes/portes-nord.png", zoom=1.05)
+        focus_mask True
+        action Jump("entrer_nord")
 
 
 label exterieur_parvis:
@@ -106,6 +179,18 @@ label exterieur_nord:
     play music "audio/Solas-InnOfGoodFortune.mp3" fadein 1.0 if_changed
     show screen exterieur_nord_screen
     pause
+    jump exterieur_nord
+
+label entrer_basse_oeuvre:
+    hide screen exterieur_ouest_screen
+    "Vous tentez d'ouvrir la porte de la Basse-Œuvre, mais elle résiste."
+    "La Basse-Œuvre est pour le moment fermée."
+    jump exterieur_ouest
+
+label entrer_nord:
+    hide screen exterieur_nord_screen
+    "La grande porte du péristyle Nord est fermée."
+    "Rien ne semble indiquer qu'elle puisse être ouverte depuis l'extérieur."
     jump exterieur_nord
 
 label trouver_cle_cloitre:
