@@ -14,3 +14,13 @@ game/saves/navigation.json
 game/saves/navigation.json
 game/saves/persistent
 
+
+# Logs and errors
+*.log
+errors.txt
+traceback.txt
+
+# Compiled Ren'Py scripts
+**/*.rpyc
+**/*.rpyb
+**/*.rpymc

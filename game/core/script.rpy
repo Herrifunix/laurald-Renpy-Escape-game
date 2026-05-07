@@ -85,7 +85,7 @@ image horloge = "images/horloge.png"
 image horloge_astro = "images/horloge-astronomique.png"
 image horloge_astro_ouvert = "images/horloge-astronomique-ouvert.png"
 image orgues = "images/orgues.png"
-image choeur = "images/choeur.png"
+image choeur = Transform("images/scenes/choeur.png", xsize=1920, ysize=1080)
 image cryptext_mini = "images/cryptex-mini.png"
 image plan_parchemin = "images/plan-parchemin.png"
 image morceau_1 = "images/morceau_1.png"
