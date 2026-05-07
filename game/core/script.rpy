@@ -74,7 +74,7 @@ image EVEQUE = "images/eveque.png"
 image Alexandre = "personnages/alexandre.png"
 image Alexandre etonne = "personnages/alexandre etonne.png"
 image EVEQUEdonne = "images/eveque2.png"
-image bg cloitre = "images/cloitre.png"
+image bg cloitre = Transform("images/scenes/Cloitre.png", xsize=1920, ysize=1080)
 image bg coffre = "images/coffre.png"
 image carolingienne = "images/carolingienne.png"
 image artfrancais = "images/artfrancais.png"

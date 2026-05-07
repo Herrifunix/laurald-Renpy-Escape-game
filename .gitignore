@@ -5,3 +5,9 @@
 **/navigation.json
 **/persistent
 log.txt
+game/cache/bytecode-312.rpyb
+game/cache/screens.rpyb
+game/core/script.rpyc
+game/cache/shaders.txt
+game/saves/persistent
+game/saves/navigation.json
