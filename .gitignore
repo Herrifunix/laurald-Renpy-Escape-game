@@ -11,3 +11,6 @@ game/core/script.rpyc
 game/cache/shaders.txt
 game/saves/persistent
 game/saves/navigation.json
+game/saves/navigation.json
+game/saves/persistent
+

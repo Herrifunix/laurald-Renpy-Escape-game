@@ -189,7 +189,7 @@ label entrer_basse_oeuvre:
 
 label entrer_nord:
     hide screen exterieur_nord_screen
-    "La grande porte du péristyle Nord est fermée."
+    "La grande porte du transept est fermée."
     "Rien ne semble indiquer qu'elle puisse être ouverte depuis l'extérieur."
     jump exterieur_nord
 
