@@ -55,10 +55,12 @@ screen exterieur_ouest_screen():
         background Solid("#0000") hover_background Solid("#ffffff22")
 
     # Entrée Cloître (partie rouge)
-    button:
-        xalign 0.85 yalign 0.65 xysize (300, 500)
+    imagebutton:
+        xalign 0.701 yalign 0.99
+        idle "images/scenes/porte-cloitre.png"
+        hover Transform("images/scenes/porte-cloitre.png", zoom=1.05)
+        focus_mask True
         action Jump("tentative_entree_cloitre")
-        background Solid("#0000") hover_background Solid("#ffffff22")
 
 screen exterieur_est_screen():
     text "Chevet de la Cathédrale" size 50 xalign 0.5 ypos 50 font "OldLondon.ttf"

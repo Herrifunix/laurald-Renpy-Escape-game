@@ -67,30 +67,30 @@ image bg accueil = Transform("images/Parvis-portail-Sud.png", xsize=1920, ysize=
 image bg portail_nord = Transform("images/Portail-nord.png", xsize=1920, ysize=1080)
 image bg chevet_est = Transform("images/Est-Chevet.png", xsize=1920, ysize=1080)
 image bg basse_oeuvre_ouest = Transform("images/Portail-Ouest-BasseOeuvre.png", xsize=1920, ysize=1080)
-image bg perso = "images/perso.png"
+image bg perso = "images/personnages/perso.png"
 image bg kiosque = "images/kiosque.png"
-image MOINE = "images/Le_moine.webp"
-image EVEQUE = "images/eveque.png"
-image Alexandre = "personnages/alexandre.png"
-image Alexandre etonne = "personnages/alexandre etonne.png"
-image EVEQUEdonne = "images/eveque2.png"
+image MOINE = "images/personnages/Le_moine.webp"
+image EVEQUE = "images/personnages/eveque.png"
+image Alexandre = "images/personnages/alexandre.png"
+image Alexandre etonne = "images/personnages/alexandre etonne.png"
+image EVEQUEdonne = "images/personnages/eveque2.png"
 image bg cloitre = Transform("images/scenes/Cloitre.png", xsize=1920, ysize=1080)
-image bg coffre = "images/coffre.png"
+image bg coffre = "images/items/coffre.png"
 image carolingienne = "images/carolingienne.png"
 image artfrancais = "images/artfrancais.png"
-image parchemin1 = "images/parchemin1.png"
-image coffre-taille-normale = "images/coffre-taille-normale.png"
+image parchemin1 = "images/items/parchemin1.png"
+image coffre-taille-normale = "images/items/coffre-taille-normale.png"
 image rosace = "images/rosace.png"
 image horloge = "images/horloge.png"
 image horloge_astro = "images/horloge-astronomique.png"
 image horloge_astro_ouvert = "images/horloge-astronomique-ouvert.png"
 image orgues = "images/orgues.png"
 image choeur = Transform("images/scenes/choeur.png", xsize=1920, ysize=1080)
-image cryptext_mini = "images/cryptex-mini.png"
-image plan_parchemin = "images/plan-parchemin.png"
-image morceau_1 = "images/morceau_1.png"
-image coffre_ouvert = "/images/coffre-taille-normale-ouvert.png"
-image plan_cathedrale_grand = "/images/plan_cathedrale_grand.png"
+image cryptext_mini = "images/items/cryptex-mini.png"
+image plan_parchemin = "images/items/plan-parchemin.png"
+image morceau_1 = "images/items/morceau_1.png"
+image coffre_ouvert = "images/items/coffre-taille-normale-ouvert.png"
+image plan_cathedrale_grand = "images/items/plan_cathedrale_grand.png"
 # Charger image Click to Continue
 image click_indicator:
     yalign 0.925 xalign 0.81
