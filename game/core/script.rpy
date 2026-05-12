@@ -81,7 +81,7 @@ image artfrancais = "images/artfrancais.png"
 image parchemin1 = "images/items/parchemin1.png"
 image coffre-taille-normale = "images/items/coffre-taille-normale.png"
 image rosace = "images/rosace.png"
-image horloge = "images/horloge.png"
+image horloge = "images/scenes/horloge.png"
 image horloge_astro = "images/horloge-astronomique.png"
 image horloge_astro_ouvert = "images/horloge-astronomique-ouvert.png"
 image orgues = "images/orgues.png"
@@ -188,7 +188,7 @@ label start:
 
     # introduire une vidéo d'introduction
     stop music
-    play movie "images/cloitre_faille.webm"
+    play movie "images/scenes/cloitre_faille.webm"
     # Attend la fin de la vidéo avant de continuer
     window hide
     pause

@@ -68,8 +68,8 @@ screen salle_choeur():
         if not has_lunettes:
             # Les lunettes affichées directement comme objet cliquable
             imagebutton:
-                idle Transform("images/lunettes.png", zoom=0.33)
-                hover Transform("images/lunettes.png", zoom=0.36)
+                idle Transform("images/items/lunettes.png", zoom=0.33)
+                hover Transform("images/items/lunettes.png", zoom=0.36)
                 action Jump("trouver_lunettes")
                 xpos 0.6
                 ypos 0.8

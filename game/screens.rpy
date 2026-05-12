@@ -1655,7 +1655,7 @@ screen carolingienne():
     frame:
         background None
         align (0.5, 0.5)  # Centre le frame à l'écran
-        add "images/cryptex.png"
+        add "images/items/cryptex.png"
 
 # Plan Art Français
 screen artfrancais():
@@ -1663,7 +1663,7 @@ screen artfrancais():
     frame:
         background None
         align (0.5, 0.5)  # Centre le frame à l'écran
-        add "images/cryptex.png"
+        add "images/items/cryptex.png"
 
 #######################################################################################################################################################################################
 # AFFICHAGE DU 1ER COFFRE DU JEU
@@ -1678,7 +1678,7 @@ screen cadenas():
     frame:
         background None
         align (0.5, 0.5)  # Centre le frame à l'écran
-        add "images/coffre-taille-normale.png"
+        add "images/items/coffre-taille-normale.png"
 
     frame:
         background None
@@ -1739,7 +1739,7 @@ screen cryptex():
     frame:
         background None
         align (0.5, 0.5)  # Centre le frame à l'écran
-        add "images/cryptex.png"
+        add "images/items/cryptex.png"
 
     frame:
         background None
@@ -1809,8 +1809,8 @@ screen coffre:
     imagebutton:
         xpos 325
         ypos 810
-        idle "images/coffre-mini.png"
-        hover "images/coffre-mini-up.png"
+        idle "images/items/coffre-mini.png"
+        hover "images/items/coffre-mini-UP.png"
         action Jump("coffre_recupere")
         
 #############PARCHEMIN dans la main de l'eveque
@@ -1818,8 +1818,8 @@ screen parchemin:
     imagebutton:
         xpos 325
         ypos 810
-        idle "images/parchemin.png"
-        hover "images/parchemin-up.png"
+        idle "images/items/parchemin.png"
+        hover "images/items/parchemin-up.png"
         action Jump("parchemin_recupere")
 
 #############PARCHEMIN dans la main de l'eveque
@@ -1827,8 +1827,8 @@ screen parchemin:
     imagebutton:
         xpos 325
         ypos 810
-        idle "images/parchemin.png"
-        hover "images/parchemin-up.png"
+        idle "images/items/parchemin.png"
+        hover "images/items/parchemin-up.png"
         action Jump("parchemin_recupere")
 
 
@@ -1837,7 +1837,7 @@ screen parchemin_recupere:
     imagebutton:
         xpos 1000
         ypos 200
-        idle "images/parchemin1.png"
+        idle "images/items/parchemin1.png"
         action Jump("coffre")
 
 #############Grille horloge
@@ -1949,7 +1949,7 @@ screen inventory_parchemin():
 
     # Fond semi-transparent pour l'inventaire
     add "images/inventory_bg.png"
-    add "images/parchemin1.png" xalign 0.5 yalign 0.5
+    add "images/items/parchemin1.png" xalign 0.5 yalign 0.5
 
     # Bouton pour fermer l'inventaire
     #textbutton "Fermer" action Return():
@@ -1975,7 +1975,7 @@ screen plan_screen():
     # affichage du fond du plan 
         xalign 0.5
         yalign 0.8
-        add "images/plan_cathedrale_grand_fond.png"
+        add "images/items/plan_cathedrale_grand_fond.png"
     #affichage du plan interactif
     frame:
         xalign 0.5
@@ -2043,7 +2043,7 @@ screen inventory_coffre1():
     frame:
         background None
         align (0.5, 0.5)  # Centre le frame à l'écran
-        add "images/coffre-taille-normale.png"
+        add "images/items/coffre-taille-normale.png"
 
     frame:
         background None
@@ -2101,7 +2101,7 @@ screen inventory_cryptex():
     frame:
         background None
         align (0.5, 0.5)  # Centre le frame à l'écran
-        add "images/cryptex.png"
+        add "images/items/cryptex.png"
 
     frame:
         background None
@@ -2188,8 +2188,8 @@ screen coffre_ouvert:
     # Si le cryptex n'a pas été pris, on affiche un bouton dessus
     if not cryptex_taken:
         imagebutton:
-            idle "images/cryptex-mini.png"  # Image du cryptex
-            hover "images/cryptex-mini-hover.png"
+            idle "images/items/cryptex-mini.png"  # Image du cryptex
+            hover "images/items/cryptex-mini-hover.png"
             xpos 0.4  # Position x
             ypos 0.65  # Position y
             action [SetVariable("cryptex_taken", True), Function(player_inventory.add_item, cryptex)]

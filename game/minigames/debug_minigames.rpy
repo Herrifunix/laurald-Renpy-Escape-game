@@ -25,7 +25,7 @@ default debug_find_objects_data = [
     {
         "key": "coffre",
         "label": "Coffre",
-        "image": "images/coffre-mini.png",
+        "image": "images/items/coffre-mini.png",
         "xpos": 730,
         "ypos": 470,
         "zoom": 0.35,
@@ -33,7 +33,7 @@ default debug_find_objects_data = [
     {
         "key": "cryptex",
         "label": "Cryptex",
-        "image": "images/cryptex-mini.png",
+        "image": "images/items/cryptex-mini.png",
         "xpos": 280,
         "ypos": 535,
         "zoom": 0.28,
@@ -64,7 +64,7 @@ screen debug_minigames():
 screen debug_find_objects():
     modal True
 
-    add "images/cloitre.png"
+    add "images/scenes/cloitre.png"
 
     $ remaining_objects = [obj["label"] for obj in debug_find_objects_data if not debug_find_objects_state[obj["key"]]]
 
