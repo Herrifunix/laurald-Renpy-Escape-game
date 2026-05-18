@@ -105,7 +105,7 @@ label start_assemblage(item_to_repair_id, repaired_item_id):
     # Désélectionner l'item
     $ selected_item = None
     
-    # Inititalisation du minijeu
+    # Initialisation du minijeu
     $ store.pieces_placed = set()
     $ store.total_pieces = 4
     

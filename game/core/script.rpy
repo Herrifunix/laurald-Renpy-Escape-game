@@ -1,8 +1,6 @@
-# Ce script montre comment créer un projet de base dans Ren'Py
-
-# Définir le nom du jeu et les informations de base
-define config.name = "Les Secrets de la Cathédrale de Beauvais"
-define config.version = "1.0"
+# Point d'entrée principal du jeu : classes Item/Inventory, déclarations
+# d'images, variables globales et label start.
+# Le nom et la version du jeu sont définis dans core/options.rpy.
 
 # Création du type d'objet Item
 # Inventaire test 2
@@ -61,14 +59,14 @@ init:
     $ font_eveque = "OldLondon.ttf"
 
 # Charger des images
-image bg bureau = "images/bureau.png"
+image bg bureau = "images/scenes/bureau.png"
 image dim = "#0008"
-image bg accueil = Transform("images/Parvis-portail-Sud.png", xsize=1920, ysize=1080)
-image bg portail_nord = Transform("images/Portail-nord.png", xsize=1920, ysize=1080)
-image bg chevet_est = Transform("images/Est-Chevet.png", xsize=1920, ysize=1080)
-image bg basse_oeuvre_ouest = Transform("images/Portail-Ouest-BasseOeuvre.png", xsize=1920, ysize=1080)
+image bg accueil = Transform("images/scenes/Parvis-portail-Sud.png", xsize=1920, ysize=1080)
+image bg portail_nord = Transform("images/scenes/Portail-nord.png", xsize=1920, ysize=1080)
+image bg chevet_est = Transform("images/scenes/Est-Chevet.png", xsize=1920, ysize=1080)
+image bg basse_oeuvre_ouest = Transform("images/scenes/Portail-Ouest-BasseOeuvre.png", xsize=1920, ysize=1080)
 image bg perso = "images/personnages/perso.png"
-image bg kiosque = "images/kiosque.png"
+image bg kiosque = "images/scenes/kiosque.png"
 image MOINE = "images/personnages/Le_moine.webp"
 image EVEQUE = "images/personnages/eveque.png"
 image Alexandre = "images/personnages/alexandre.png"
@@ -76,15 +74,15 @@ image Alexandre etonne = "images/personnages/alexandre etonne.png"
 image EVEQUEdonne = "images/personnages/eveque2.png"
 image bg cloitre = Transform("images/scenes/Cloitre.png", xsize=1920, ysize=1080)
 image bg coffre = "images/items/coffre.png"
-image carolingienne = "images/carolingienne.png"
-image artfrancais = "images/artfrancais.png"
+image carolingienne = "images/scenes/carolingienne.png"
+image artfrancais = "images/scenes/artfrancais.png"
 image parchemin1 = "images/items/parchemin1.png"
 image coffre-taille-normale = "images/items/coffre-taille-normale.png"
-image rosace = "images/rosace.png"
+image rosace = "images/scenes/rosace.png"
 image horloge = "images/scenes/horloge.png"
-image horloge_astro = "images/horloge-astronomique.png"
-image horloge_astro_ouvert = "images/horloge-astronomique-ouvert.png"
-image orgues = "images/orgues.png"
+image horloge_astro = "images/scenes/horloge-astronomique.png"
+image horloge_astro_ouvert = "images/scenes/horloge-astronomique-ouvert.png"
+image orgues = "images/scenes/orgues.png"
 image choeur = Transform("images/scenes/choeur.png", xsize=1920, ysize=1080)
 image cryptext_mini = "images/items/cryptex-mini.png"
 image plan_parchemin = "images/items/plan-parchemin.png"
@@ -94,13 +92,13 @@ image plan_cathedrale_grand = "images/items/plan_cathedrale_grand.png"
 # Charger image Click to Continue
 image click_indicator:
     yalign 0.925 xalign 0.81
-    "images/click1.png"
+    "images/gui/click1.png"
     pause 0.25
-    "images/click2.png"
+    "images/gui/click2.png"
     pause 0.25
     repeat
 
-# Déclarer les variables globales pour le cadenas
+# Les 4 chiffres (0-9) saisis par le joueur sur le cadenas du coffre.
 default numb1 = 0
 default numb2 = 0
 default numb3 = 0
@@ -115,15 +113,10 @@ default cryptex_taken = False  # Indicateur si le cryptex a été pris
 default plan_taken = False  # Indicateur si le plan a été pris
 default morceau_taken = False  # Indicateur si le morceau a été pris
 default morceaux_parchemin = 0 # Compteur pour la quantité de morceaux de parchemin
-default puzzle2_time_limit = 300
-default puzzle2_deadline = 0.0
-default puzzle2_time_left = 0
-
-# Action personnalisée pour permuter la valeur de clef_horloge
-init python:
-    def toggle_key():
-        global clef_horloge
-        clef_horloge = not clef_horloge
+# Puzzle de l'horloge astronomique (Puzzle2) : compte à rebours.
+default puzzle2_time_limit = 300   # durée accordée, en secondes
+default puzzle2_deadline = 0.0     # horodatage (st) de fin, calculé au lancement
+default puzzle2_time_left = 0      # secondes restantes, mis à jour par l'écran timer
 
 
 # Déclarer les variables globales pour le criptext
@@ -160,7 +153,8 @@ define alex = Character("Alexandre",
 
 #définir angle de rotation pour image
 init python:
-    # Variables pour gérer l'angle de rotation
+    # Angle de rotation courant de l'image (degrés). Départ à 15° ;
+    # rotate_clockwise/counterclockwise avancent par pas de 30°.
     angle = 15
 
     # Fonction pour faire pivoter l'image
@@ -249,9 +243,6 @@ label rencontre_moine:
     b "{size=+10}{font=OldLondon.ttf}J'estoie en train de travailler sur les plans de la cathédrale. Comment sui-je venu ci ?{/font}\n{/size}{size=-7} {i}J'étais en train de travailler sur les plans de la cathédrale. Comment suis-je venu ici ?{/i}{/size}{nw}"
     perso "Il semble que vous ayez glissé dans une faille temporelle."
 
-    # Réaction furieuse de Milon
-    # show milon furious at left with dissolve
-
     # Transition pour la suite de l'histoire
     voice "audio/e-2.mp3"
     e "Milon de Nanteuil semble perplexe et furieux, mais il comprend qu'il doit coopérer pour trouver une solution à cette situation incroyable."
@@ -324,7 +315,6 @@ label dial_eveque:
             jump quelleannée
         "Arrêter de parler à l'évêque." : 
             jump eveque_cloitre
-            #jump coffre1
 
 label quelleannée:
     voice "audio/milon7.ogg"
@@ -441,9 +431,6 @@ label coffre_ouvert:
     b "{size=+10}{font=OldLondon.ttf}À la fin, pas si fin ! Regarde donc ce que tu as amassé !{/font}\n{/size}{size=-7}{i}Finalement, pas si futé ! Consulte ton inventaire !{/i}"
     jump coffre_ouvert_et_vide
 
-#label cryptex:
-    call screen inventory_screen
-
 label cryptex2:
     call screen inventory_cryptex
 
@@ -542,7 +529,6 @@ label Horloge:
     # Montrer la scène horloge_astro
     scene horloge_astro
     show Alexandre at right
-    show screen toggle_button
     show screen grille_horloge
     alex "Bonjour [nom_du_perso]"
 
@@ -558,7 +544,6 @@ label continue:
 label puzzle:
     #call screen puzzle
     scene bg bureau
-    hide screen toggle_button
     hide screen grille_horloge
 
     python:
@@ -613,7 +598,6 @@ label win:
 
 label puzzle_2:
     scene bg bureau
-    hide screen toggle_button
     hide screen grille_horloge
     $ puzzle2_time_left = puzzle2_time_limit
     show screen puzzle2_timer

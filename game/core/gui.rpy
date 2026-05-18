@@ -95,7 +95,7 @@ define gui.title_text_size = 75
 
 ## Les images utilisées pour le menu principal et le menu du jeu.
 #define gui.main_menu_background = "gui/main_menu.png"
-define gui.main_menu_background = Movie(play="images/game_menu.webm")#4A2C2A
+define gui.main_menu_background = Movie(play="images/gui/game_menu.webm")#4A2C2A
 define gui.game_menu_background = "gui/game_menu.png"
 
 

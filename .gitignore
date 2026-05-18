@@ -4,23 +4,15 @@
 **/*.save.bak
 **/navigation.json
 **/persistent
-log.txt
-game/cache/bytecode-312.rpyb
-game/cache/screens.rpyb
-game/core/script.rpyc
-game/cache/shaders.txt
-game/saves/persistent
-game/saves/navigation.json
-game/saves/navigation.json
-game/saves/persistent
-
 
 # Logs and errors
 *.log
+log.txt
 errors.txt
 traceback.txt
 
-# Compiled Ren'Py scripts
+# Compiled Ren'Py scripts and cache
 **/*.rpyc
 **/*.rpyb
 **/*.rpymc
+game/cache/

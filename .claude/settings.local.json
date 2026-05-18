@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E '\\\\.\\(rpy|py|ps1|bat\\)$')",
+      "Bash(grep -vE '\\\\.\\(png|jpg|jpeg|ogg|mp3|wav|webm|ttf|rpyc|rpyb\\)$')",
+      "Bash(python -c ' *)",
+      "Bash(git rm *)",
+      "Bash(git mv *)",
+      "Read(//c/Users/Pierre/Downloads/Nouveau dossier \\(3\\)/renpy-8.5.2-sdk/**)",
+      "Bash(ls renpy.py lib/py3-windows-x86_64/python.exe)",
+      "Bash(\"./lib/py3-windows-x86_64/python.exe\" renpy.py \"laurald-Renpy-Escape-game\" lint)",
+      "Bash(grep -E \"^#|# {50,}\" game/core/screens.rpy)",
+      "Bash(grep -E '\\\\.\\(keystore|rpyc|rpyb\\)$|graphviz')",
+      "Bash(grep -cE '\\\\.\\(rpyc|rpyb|rpymc\\)$')",
+      "Bash(ls *.py *.sh)",
+      "Bash(ls renpy.sh renpy.py lib)"
+    ]
+  }
+}

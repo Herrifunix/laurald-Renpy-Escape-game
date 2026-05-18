@@ -15,7 +15,7 @@
 ##
 ## La chaîne de caractère contenu dans _() est éligible à la traduction.
 
-define config.name = _("Faille temporelle à la Cathédrale de Beauvais - ABC")
+define config.name = _("Faille temporelle à la Cathédrale de Beauvais")
 
 
 ## Détermine si le titre renseigné plus haut est affiché sur l'écran du menu
@@ -38,15 +38,12 @@ Jeu réalisé par l'Assocation Beauvais Cathédrale à l'occasion des 800 ans du
 Musique du générique : Beyond The Warriors par Guifrog (Source : https://guifrog.bandcamp.com - Licence : https://creativecommons.org/licenses/by/3.0/deed.fr - Téléchargement : https://www.auboutdufil.com)
 """)
 
-## Active le mode développeur même dans les versions packagées pour retrouver le menu de debug
-define config.developer = True
-
 
 ## Un nom court pour le jeu qui sera utilisé pour les répertoires et le nom de
 ## l’exécutable. Il ne doit contenir que des caractères ASCII et ne doit pas
 ## contenir d’espace, de virgules ou de points-virgules.
 
-define build.name = "ABC"
+define build.name = "FailleTemporelleBeauvais"
 
 
 ## Sons et musiques ############################################################
@@ -168,6 +165,26 @@ define config.window_icon = "gui/window_icon.png"
 ##
 ## Active le mode développeur pour restaurer le menu de debug et les raccourcis.
 define config.developer = True
+
+## Résolution des fichiers image ###############################################
+##
+## Les images sont triées en sous-dossiers de game/images/ (scenes/, items/,
+## personnages/…). Ren'Py ne cherche par défaut que dans game/ et game/images/.
+## On ajoute ici les sous-dossiers pour que les références par nom de fichier
+## court (ex. "morceau_1.png", "eveque.png") soient résolues quel que soit le
+## sous-dossier. Garder les noms de fichiers uniques dans game/images/.
+define config.search_prefixes = [
+    "",
+    "images/",
+    "images/scenes/",
+    "images/items/",
+    "images/personnages/",
+    "images/gui/",
+    "images/horloge/",
+    "images/puzzle/",
+    "images/safe_i/",
+    "images/message_cache/",
+]
 
 
 ## Configuration de la compilation #############################################

@@ -78,7 +78,7 @@ screen exterieur_est_screen():
         background Solid("#0000") hover_background Solid("#0008")
         text ">" align (0.5, 0.5) size 80 color "#fff"
     
-    # Interaction: Pierre pour la clé
+    # Zone cliquable pour trouver la clé du cloître
     if not has_cle_cloitre:
         button:
             xalign 0.7 yalign 0.85 xysize (200, 150)

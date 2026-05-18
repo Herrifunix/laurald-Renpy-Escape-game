@@ -85,6 +85,7 @@ init python:
                         if cell[0] >= 0 and cell[1] >= 0:
                             current_alpha = self.revealed_cells.get(cell, 0.0)
                             if current_alpha < 1.0:
+                                # Vitesse de grattage : chaque passage de souris révèle la cellule de 1,5 %
                                 new_alpha = min(1.0, current_alpha + 0.015)
                                 self.revealed_cells[cell] = new_alpha
                                 # On détecte quand une cellule atteint 80% (0.8) plutôt que de recalculer à chaque fois

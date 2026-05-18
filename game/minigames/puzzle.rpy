@@ -44,6 +44,8 @@ init python:
             # Create the table, stock, and waste.
             self.table = t = Table(base="card/base.png", back="card/base.png")
             
+            # Rotations possibles d'une pièce. Le 0 répété trois fois biaise le
+            # tirage vers « pas de rotation » (~50 % de chances).
             rotate_random = [0,0,0,90,180,270]
             deck = []
             # Create the stock and shuffle it.

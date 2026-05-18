@@ -30,6 +30,7 @@ screen debug_map_locations():
             textbutton "Croisée" action ToggleVariable("location_croisee_active")
             textbutton "Horloge" action ToggleVariable("location_horloge_active")
             textbutton "Choeur" action ToggleVariable("location_choeur_active")
+            textbutton "Clef Horloge (Test)" action ToggleVariable("clef_horloge")
             
             null height 20
             

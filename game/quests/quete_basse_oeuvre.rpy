@@ -1,5 +1,6 @@
-# Définition du NPC "Agnès" 
+# Définition du NPC "Agnès"
 image agnes = "images/personnages/soeur.png"
+image agnes lunettes = "images/personnages/soeur lunettes.png"
 define agnes_char = Character("Sœur Agnès",
                         image="agnes",
                         color="#4a7a8c",
@@ -10,7 +11,7 @@ default quete_clef_acceptee = False
 default morceau_cle_donne = False
 
 label basse_oeuvre:
-    scene carolingienne with fade
+    scene bg bureau with fade
     
     # Si le joueur n'a pas encore le morceau
     if not morceau_cle_donne:
@@ -50,7 +51,7 @@ label basse_oeuvre:
                 agnes_char "Elles doivent être là-bas..."
     else:
         # Dialogue post-quête
-          show agnes lunettes at center
+        show agnes lunettes at center
     # On reste dans la pièce
     $ _game_menu_screen = None
 label boucle_basse_oeuvre:
