@@ -1,106 +1,216 @@
-# game/minijeu_message_cache.rpy
+# game/minigames/minijeu_message_cache.rpy
 
 init python:
     import pygame
+    import math
 
     class InvisibleInk(renpy.Displayable):
-        def __init__(self, empty_img, revealed_img, grid_size=40, brush_size=2, **kwargs):
-            super(InvisibleInk, self).__init__(**kwargs)
-            self.empty_img = renpy.displayable(empty_img)
-            self.revealed_img = renpy.displayable(revealed_img)
-            self.grid_size = grid_size
-            self.brush_size = brush_size
-            self.revealed_cells = {}
-            self.is_completed = False
-            self.total_cells_approx = 0
-            self.fully_revealed_count = 0
-            self._cached_chunks = {}
+        """
+        Parchemin interactif : la flamme (le curseur) chauffe le papier.
+        La chaleur s'accumule pixel par pixel dans un masque, ce qui revele
+        l'encre invisible en douceur et laisse une trace de brulure brune.
+        """
 
-            # Pre-create standard alpha transforms
-            self.alpha_imgs = {
-                0.2: Transform(self.revealed_img, alpha=0.2),
-                0.4: Transform(self.revealed_img, alpha=0.4),
-                0.6: Transform(self.revealed_img, alpha=0.6),
-                0.8: Transform(self.revealed_img, alpha=0.8),
-                1.0: Transform(self.revealed_img, alpha=1.0)
-            }
+        SCORE_COLS = 32
+        SCORE_ROWS = 24
+        SCORE_HEAT_THRESHOLD = 120.0   # chaleur a partir de laquelle une case compte
+        WIN_FRACTION = 0.60            # parite avec l'ancien seuil de victoire
+        FLAME_REDRAW = 1.0 / 30.0      # rafraichissement continu pour le scintillement
+
+        def __init__(self, empty_img, revealed_img, brush_radius=60, brush_strength=120, **kwargs):
+            super(InvisibleInk, self).__init__(**kwargs)
+            self.empty_path = empty_img
+            self.revealed_path = revealed_img
+            self.brush_radius = brush_radius
+            self.brush_strength = brush_strength
+
+            # Ressources chargees paresseusement au premier rendu.
+            self.loaded = False
+            self.size = None
+            self.empty_surf = None
+            self.message_surf = None
+            self.heat_surf = None
+            self.brush_stamp = None
+
+            # Composite mis en cache, recalcule seulement quand la chaleur change.
+            self.parchment_cache = None
+            self.heat_dirty = True
+
+            # Progression : chaleur accumulee par case d'une grille invisible.
+            self.cell_heat = {}
+            self.revealed_count = 0
+            self.win_count = self.SCORE_COLS * self.SCORE_ROWS * self.WIN_FRACTION
+
+            self.is_completed = False
+            self.cursor_xy = None
+
+        def _ensure_loaded(self):
+            if self.loaded:
+                return
+
+            self.empty_surf = renpy.load_surface(self.empty_path)
+            self.message_surf = renpy.load_surface(self.revealed_path)
+            self.size = self.empty_surf.get_size()
+
+            # Masque de chaleur : son canal alpha contient la chaleur (0-255).
+            self.heat_surf = pygame.Surface(self.size, pygame.SRCALPHA)
+            self.heat_surf.fill((255, 255, 255, 0))
+
+            self.brush_stamp = self._build_brush(self.brush_radius, self.brush_strength)
+            self.loaded = True
+
+        def _build_brush(self, radius, strength):
+            # Tampon radial doux : alpha fort au centre, nul sur les bords.
+            size = radius * 2
+            stamp = pygame.Surface((size, size), pygame.SRCALPHA)
+            stamp.fill((255, 255, 255, 0))
+            for i in range(radius, 0, -1):
+                t = i / float(radius)
+                a = int(strength * (1.0 - t * t))
+                if a > 0:
+                    pygame.draw.circle(stamp, (255, 255, 255, a), (radius, radius), i)
+            return stamp
+
+        def _stamp_heat(self, x, y):
+            r = self.brush_radius
+            self.heat_surf.blit(self.brush_stamp, (x - r, y - r),
+                                special_flags=pygame.BLEND_RGBA_ADD)
+            self._mark_score(x, y)
+
+        def _mark_score(self, x, y):
+            # Grille invisible de progression : aucune lecture de pixels.
+            w, h = self.size
+            cw = w / float(self.SCORE_COLS)
+            ch = h / float(self.SCORE_ROWS)
+            r = self.brush_radius
+            r2 = r * r
+            strength = self.brush_strength
+            threshold = self.SCORE_HEAT_THRESHOLD
+
+            for gx in range(self.SCORE_COLS):
+                ccx = (gx + 0.5) * cw
+                if abs(ccx - x) > r:
+                    continue
+                for gy in range(self.SCORE_ROWS):
+                    ccy = (gy + 0.5) * ch
+                    d2 = (ccx - x) ** 2 + (ccy - y) ** 2
+                    if d2 > r2:
+                        continue
+                    t = (d2 ** 0.5) / r
+                    contrib = strength * (1.0 - t * t)
+                    key = (gx, gy)
+                    prev = self.cell_heat.get(key, 0.0)
+                    new = min(255.0, prev + contrib)
+                    self.cell_heat[key] = new
+                    if prev < threshold <= new:
+                        self.revealed_count += 1
+
+        def _composite_parchment(self):
+            # BLEND_RGBA_MULT contre le masque blanc/chaleur : alpha *= chaleur/255.
+            mult = pygame.BLEND_RGBA_MULT
+
+            cache = pygame.Surface(self.size, pygame.SRCALPHA)
+            cache.blit(self.empty_surf, (0, 0))
+
+            # Message cache, revele proportionnellement a la chaleur.
+            revealed = pygame.Surface(self.size, pygame.SRCALPHA)
+            revealed.blit(self.message_surf, (0, 0))
+            revealed.blit(self.heat_surf, (0, 0), special_flags=mult)
+            cache.blit(revealed, (0, 0))
+
+            # Trace de brulure brune par-dessus : teinte la zone chauffee.
+            scorch = pygame.Surface(self.size, pygame.SRCALPHA)
+            scorch.fill((92, 50, 22, 130))
+            scorch.blit(self.heat_surf, (0, 0), special_flags=mult)
+            cache.blit(scorch, (0, 0))
+
+            return cache
+
+        def _render_flame(self, st):
+            fw, fh = 96, 140
+            cx = fw // 2
+            base_y = fh - 16
+            surf = pygame.Surface((fw, fh), pygame.SRCALPHA)
+
+            # Halo de lumiere chaude (degrade radial doux).
+            glow_pulse = 0.85 + 0.15 * math.sin(st * 6.5)
+            glow_r = max(1, int(46 * glow_pulse))
+            glow_cy = base_y - 30
+            for gr in range(glow_r, 0, -1):
+                t = gr / float(glow_r)
+                a = int(70 * (1.0 - t) * (1.0 - t))
+                if a > 0:
+                    pygame.draw.circle(surf, (255, 150, 60, a), (cx, glow_cy), gr)
+
+            # Scintillement de la flamme.
+            sway = math.sin(st * 11.0) * 3.2 + math.sin(st * 23.0) * 1.4
+            stretch = 1.0 + 0.16 * math.sin(st * 17.0)
+            flick = 0.92 + 0.08 * math.sin(st * 31.0)
+
+            # Corps : trois gouttes empilees, de l'exterieur vers le coeur.
+            layers = [
+                ((240, 115, 25, 220), 18.0, 76.0),
+                ((252, 205, 60, 240), 12.0, 56.0),
+                ((255, 252, 222, 255), 6.0, 32.0),
+            ]
+            for color, half_w, height in layers:
+                hw = half_w * flick
+                hgt = height * stretch
+                mid_y = base_y - hgt * 0.52
+                pts = [
+                    (int(cx - hw), base_y),
+                    (int(cx - hw * 0.5), int(mid_y + sway * 0.25)),
+                    (int(cx + sway), int(base_y - hgt)),
+                    (int(cx + hw * 0.5), int(mid_y + sway * 0.25)),
+                    (int(cx + hw), base_y),
+                ]
+                pygame.draw.polygon(surf, color, pts)
+
+            return surf, fw, fh, base_y
 
         def render(self, width, height, st, at):
-            empty_r = renpy.render(self.empty_img, width, height, st, at)
-            
-            # Fetch valid renders for this frame
-            a_renders = {}
-            for lvl, disp in self.alpha_imgs.items():
-                a_renders[lvl] = renpy.render(disp, width, height, st, at)
-            
-            rv = renpy.Render(empty_r.width, empty_r.height)
-            rv.blit(empty_r, (0, 0))
-            
-            grid = self.grid_size
-            
-            if self.total_cells_approx == 0:
-                self.total_cells_approx = (empty_r.width // grid) * (empty_r.height // grid)
-                
-            for (cx, cy), alpha_val in self.revealed_cells.items():
-                a = 0.2
-                if alpha_val >= 1.0: a = 1.0
-                elif alpha_val >= 0.8: a = 0.8
-                elif alpha_val >= 0.6: a = 0.6
-                elif alpha_val >= 0.4: a = 0.4
-                    
-                revealed_r = a_renders[a]
-                
-                x = cx * grid
-                y = cy * grid
-                w = min(grid, revealed_r.width - x)
-                h = min(grid, revealed_r.height - y)
-                if w > 0 and h > 0:
-                    cache_key = (a, cx, cy)
-                    chunk = self._cached_chunks.get(cache_key)
-                    if chunk is None:
-                        chunk = revealed_r.subsurface((x, y, w, h))
-                        self._cached_chunks[cache_key] = chunk
-                    rv.blit(chunk, (x, y))
-                    
+            self._ensure_loaded()
+            w, h = self.size
+
+            if self.heat_dirty or self.parchment_cache is None:
+                self.parchment_cache = self._composite_parchment()
+                self.heat_dirty = False
+
+            rv = renpy.Render(w, h)
+            out = rv.canvas().get_surface()
+            out.blit(self.parchment_cache, (0, 0))
+
+            if self.cursor_xy is not None:
+                flame, fw, fh, base_y = self._render_flame(st)
+                mx, my = self.cursor_xy
+                out.blit(flame, (mx - fw // 2, my - base_y))
+
+            # Rafraichissement continu : la flamme scintille meme curseur immobile.
+            renpy.redraw(self, self.FLAME_REDRAW)
             return rv
 
         def event(self, ev, x, y, st):
-            # Ne fait rien si la position de la souris est hors de la zone du parchemin
-            if x < 0 or y < 0 or x > self.total_cells_approx * self.grid_size:
+            if self.size is None:
                 return None
-                
-            grid = self.grid_size
-            added = False
-            
-            cx = int(x) // grid
-            cy = int(y) // grid
-            
-            # Révèle une zone autour de la souris en fonction de brush_size
-            for dx in range(-self.brush_size, self.brush_size + 1):
-                for dy in range(-self.brush_size, self.brush_size + 1):
-                    # Forme grossièrement ronde/losange
-                    if abs(dx) + abs(dy) <= self.brush_size + 1:
-                        cell = (cx + dx, cy + dy)
-                        # Pour éviter de stocker des cellules hors limites (moins de ressources)
-                        if cell[0] >= 0 and cell[1] >= 0:
-                            current_alpha = self.revealed_cells.get(cell, 0.0)
-                            if current_alpha < 1.0:
-                                # Vitesse de grattage : chaque passage de souris révèle la cellule de 1,5 %
-                                new_alpha = min(1.0, current_alpha + 0.015)
-                                self.revealed_cells[cell] = new_alpha
-                                # On détecte quand une cellule atteint 80% (0.8) plutôt que de recalculer à chaque fois
-                                if current_alpha < 0.8 and new_alpha >= 0.8:
-                                    self.fully_revealed_count += 1
-                                added = True
-                        
-            if added:
-                renpy.redraw(self, 0)
-                
-                # Victoire si 60% de la zone est révélée
-                if self.total_cells_approx > 0:
-                    if self.fully_revealed_count > (self.total_cells_approx * 0.6) and not self.is_completed:
+
+            w, h = self.size
+            inside = (0 <= x < w) and (0 <= y < h)
+
+            if ev.type == pygame.MOUSEMOTION:
+                if inside:
+                    ix, iy = int(x), int(y)
+                    self.cursor_xy = (ix, iy)
+                    self._stamp_heat(ix, iy)
+                    self.heat_dirty = True
+                    renpy.redraw(self, 0)
+
+                    # Victoire quand 60% de la zone est suffisamment chauffee.
+                    if not self.is_completed and self.revealed_count >= self.win_count:
                         self.is_completed = True
-                        return True # Renvoie True à l'_return de l'écran
+                        return True
+                elif self.cursor_xy is not None:
+                    self.cursor_xy = None
+                    renpy.redraw(self, 0)
 
             return None
 
@@ -110,9 +220,9 @@ screen minijeu_message_cache():
     tag minijeu_message
 
     add "#000e" # Fond sombre
-    
+
     text "Révélation à la bougie" size 50 xalign 0.5 ypos 30 font "OldLondon.ttf" color "#ffcc00"
-    text "Passez la flamme (votre souris) sur le parchemin pour faire apparaître l'encre invisible grâce à la chaleur." size 24 xalign 0.5 ypos 90 font "OldLondon.ttf" color "#aaa"
+    text "Promenez lentement la flamme sur le parchemin : la chaleur révèle l'encre et laisse une trace de brûlure." size 24 xalign 0.5 ypos 90 font "OldLondon.ttf" color "#aaa"
 
     # L'affichage de notre Custom Displayable (le parchemin interactif)
     frame:
@@ -120,7 +230,7 @@ screen minijeu_message_cache():
         yalign 0.5
         background None
         # On définit une taille fixe si besoin ou on laisse s'adapter à l'image
-        add InvisibleInk("images/message_cache/parchemin vide.png", "images/message_cache/parchemin avec le message.png", grid_size=20, brush_size=3)
+        add InvisibleInk("images/message_cache/parchemin vide.png", "images/message_cache/parchemin avec le message.png", brush_radius=60, brush_strength=120)
 
     textbutton "Quitter" action Return(False):
         xalign 0.5
@@ -129,7 +239,7 @@ screen minijeu_message_cache():
 
 label start_message_cache(item_a_id=None, item_b_id=None, result_id=None):
     call screen minijeu_message_cache
-    
+
     if _return == True:
         $ renpy.notify("Le message complet est apparu !")
         if result_id:
@@ -146,6 +256,5 @@ label start_message_cache(item_a_id=None, item_b_id=None, result_id=None):
                 item_2 = create_item_by_id(item_b_id)
                 player_inventory.add_item(item_1)
                 player_inventory.add_item(item_2)
-        
-    return
 
+    return

@@ -13,7 +13,17 @@
       "Bash(grep -E '\\\\.\\(keystore|rpyc|rpyb\\)$|graphviz')",
       "Bash(grep -cE '\\\\.\\(rpyc|rpyb|rpymc\\)$')",
       "Bash(ls *.py *.sh)",
-      "Bash(ls renpy.sh renpy.py lib)"
+      "Bash(ls renpy.sh renpy.py lib)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Pierre\\\\Downloads\\\\Nouveau dossier \\(3\\)\\\\renpy-8.5.2-sdk\\\\laurald-Renpy-Escape-game\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(xargs grep -l \"image\")",
+      "Bash(xargs grep -l \"image.*manage\\\\|manage.*image\")",
+      "Bash(grep -E \"\\\\.rpy$\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Pierre\\\\Downloads\\\\Nouveau dossier \\(3\\)\\\\renpy-8.5.2-sdk\\\\laurald-Renpy-Escape-game\\\\game\\\\images\\\\message_cache\\\\\" -File | Select-Object Name, @{Name=\"SizeKB\"; Expression={[math]::Round\\($_.Length/1KB, 2\\)}} | Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Pierre\\\\Downloads\\\\Nouveau dossier \\(3\\)\\\\renpy-8.5.2-sdk\\\\laurald-Renpy-Escape-game\\\\game\\\\images\" -Directory | ForEach-Object { Write-Host \"=== $\\($_.Name\\) ===\" ; \\(Get-ChildItem $_.FullName -File | Measure-Object\\).Count })",
+      "Bash(identify \"game\\\\images\\\\message_cache\\\\parchemin vide.png\")",
+      "Bash(xargs grep -l \"candle\\\\|flame\\\\|fire\\\\|burn\\\\|ink\\\\|paper\\\\|scorch\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Pierre\\\\Downloads\\\\Nouveau dossier \\(3\\)\\\\renpy-8.5.2-sdk\\\\laurald-Renpy-Escape-game\\\\game\\\\images\\\\message_cache\" -File | Select-Object FullName, @{Name=\"SizeKB\"; Expression={[math]::Round\\($_.Length/1KB, 2\\)}}; \"\"; \"Dimensions \\(from file command\\):\"; cmd /c \"file `\"C:\\\\Users\\\\Pierre\\\\Downloads\\\\Nouveau dossier \\(3\\)\\\\renpy-8.5.2-sdk\\\\laurald-Renpy-Escape-game\\\\game\\\\images\\\\message_cache\\\\parchemin vide.png`\"\")"
     ]
   }
 }
