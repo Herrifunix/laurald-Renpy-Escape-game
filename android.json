@@ -7,7 +7,7 @@
     "include_pil": false,
     "include_sqlite": false,
     "layout": null,
-    "name": "Faille temporelle à la Cathédrale de Beauvais",
+    "name": "Faille temporelle \u00e0 la Cath\u00e9drale de Beauvais",
     "numeric_version": 1,
     "orientation": "sensorLandscape",
     "package": "fr.abc.failletemporelle",
